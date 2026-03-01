@@ -1,0 +1,36 @@
+# examples/config.yaml
+# Example FuseIoT configuration
+
+default_ttl: 5.0
+max_devices: 100
+
+# Confirmation settings
+confirm_default: true
+confirm_timeout: 2.0
+
+# Resilience
+circuit_breaker_enabled: true
+circuit_failure_threshold: 5
+circuit_recovery_timeout: 30.0
+
+rate_limit_enabled: true
+rate_limit_requests: 100
+rate_limit_window: 60.0
+
+# Persistence
+persistence_enabled: true
+persistence_backend: sqlite
+persistence_path: fuseiot.db
+
+# Logging
+log_level: INFO
+log_json: false
+
+# Security
+tls_verify: true
+
+# Environment
+environment: production
+tags:
+  location: home
+  floor: ground

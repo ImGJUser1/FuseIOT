@@ -1,7 +1,8 @@
-
-from typing import Dict, Any, Optional, Union
+from typing import Dict, Any, Optional, Union, List
 from dataclasses import dataclass, field
 from enum import Enum, auto
+
+import time
 
 
 class CommandStatus(Enum):
@@ -61,7 +62,6 @@ class CommandResult:
     
     def __post_init__(self):
         if self.timestamp is None:
-            import time
             self.timestamp = time.time()
     
     def __bool__(self) -> bool:
@@ -139,3 +139,15 @@ class CommandResult:
             return f"<CommandResult UNCONFIRMED {status_str}>"
         else:
             return f"<CommandResult FAILED {status_str}: {self.error}>"
+
+@dataclass
+class BatchResult:
+    """
+    Result of batch operations.
+    """
+    results: List[CommandResult]
+    total: int
+    successful: int
+    failed: int
+    confirmed: int
+    total_latency_ms: float

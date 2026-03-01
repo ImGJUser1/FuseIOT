@@ -1,45 +1,85 @@
-﻿
-import time
-from typing import Dict, Any, Optional, List, Type, Union, Iterator
-from threading import Lock
+﻿import time
+import asyncio
+from typing import Dict, Any, Optional, List, Type, Union, Iterator, Callable, Tuple
+from threading import Lock, RLock
+from dataclasses import dataclass, field
 
-from fuseiot.protocols.base import Protocol
-from fuseiot.capabilities.base import Capability, CapabilityConfig
+from fuseiot.protocols.base import Protocol, AsyncProtocol
+from fuseiot.capabilities.base import Capability, CapabilityConfig, AsyncCapability
 from fuseiot.state.cache import StateCache
-from fuseiot.exceptions import ConfigurationError, DeviceError
+from fuseiot.state.persistence import PersistenceBackend, SQLiteBackend
+from fuseiot.state.events import EventBus, StateChangeEvent
+from fuseiot.result import CommandResult, CommandStatus, BatchResult
+from fuseiot.exceptions import ConfigurationError, DeviceError, TimeoutError
+from fuseiot.logging_config import get_logger
 from fuseiot.__version__ import __version__
+from fuseiot.config import Config
+
+logger = get_logger("hub")
+
+
+@dataclass
+class HubConfig:
+    """Hub configuration."""
+    default_ttl: float = 5.0
+    max_devices: int = 1000
+    persistence: Optional[PersistenceBackend] = None
+    enable_events: bool = True
+    metrics_enabled: bool = False
 
 
 class Hub:
     """
     Central registry for device capabilities.
     
-    Thread-safe. Designed for single instance per application,
-    but multiple instances can coexist for different control domains.
-    
-    Attributes:
-        _devices: Mapping of device_id to Capability instances
-        _cache: Shared StateCache for all registered devices
-        _metadata: Runtime statistics and version info
-        _lock: Thread safety for device registration
+    Enhanced features:
+    - Async/await support
+    - Event bus for state changes
+    - Persistence backend
+    - Batch operations
+    - Metrics collection
+    - Auto-discovery integration
     """
     
-    def __init__(self, default_ttl: float = 5.0):
-        """
-        Initialize new Hub instance.
+    def __init__(
+        self,
+        config: Optional[Union[HubConfig, Config]] = None,
+        default_ttl: float = None
+    ):
+        if config is None:
+            config = HubConfig(default_ttl=default_ttl or 5.0)
+        elif isinstance(config, Config):
+            config = HubConfig(
+                default_ttl=config.default_ttl,
+                persistence=SQLiteBackend(config.persistence_path) if config.persistence_enabled else None,
+                enable_events=True,
+                metrics_enabled=config.metrics_enabled
+            )
         
-        Args:
-            default_ttl: Default cache time-to-live in seconds
-        """
+        self._config = config
         self._devices: Dict[str, Capability] = {}
-        self._cache = StateCache(default_ttl=default_ttl)
+        self._cache = StateCache(
+            default_ttl=config.default_ttl,
+            persistence=config.persistence
+        )
+        self._event_bus = EventBus() if config.enable_events else None
         self._metadata = {
             "version": __version__,
             "created_at": time.time(),
             "devices_registered": 0,
             "devices_removed": 0,
         }
-        self._lock = Lock()
+        self._lock = RLock()
+        self._metrics = {
+            "commands_total": 0,
+            "commands_success": 0,
+            "commands_failed": 0,
+        }
+        
+        logger.info("hub_initialized", 
+                   version=__version__,
+                   persistence_enabled=config.persistence is not None,
+                   events_enabled=config.enable_events)
     
     def add_device(
         self,
@@ -51,29 +91,6 @@ class Hub:
     ) -> Capability:
         """
         Register a new device capability with the Hub.
-        
-        This is the primary method for adding controllable devices.
-        The protocol must be connected before registration.
-        
-        Args:
-            protocol: Transport protocol instance (HTTP, MQTT, etc.)
-            capability_class: Capability type class (Switchable, Sensor, Motor)
-            device_id: Optional custom identifier. If None, auto-generated
-            config: Optional capability configuration
-            **capability_kwargs: Additional capability-specific arguments
-                (e.g., unit="celsius", position_range=(0, 360))
-        
-        Returns:
-            Configured and registered Capability instance
-            
-        Raises:
-            ConfigurationError: If protocol not connected or setup fails
-            DeviceError: If device_id already exists
-        
-        Example:
-            >>> hub = Hub()
-            >>> http = HTTP("http://192.168.1.45")
-            >>> relay = hub.add_device(http, Switchable, device_id="light_01")
         """
         # Verify protocol connection
         if not protocol.is_connected:
@@ -82,6 +99,10 @@ class Hub:
                     f"Cannot connect to protocol: {protocol.endpoint}. "
                     "Check network and device availability."
                 )
+        
+        # Inject event bus if capability supports it
+        if self._event_bus and "event_bus" not in capability_kwargs:
+            capability_kwargs["event_bus"] = self._event_bus
         
         # Create capability instance
         try:
@@ -92,6 +113,7 @@ class Hub:
                 **capability_kwargs
             )
         except Exception as e:
+            logger.error("capability_creation_failed", error=str(e))
             raise ConfigurationError(
                 f"Failed to create capability {capability_class.__name__}: {e}"
             )
@@ -100,57 +122,34 @@ class Hub:
         final_id = device_id or capability.id
         
         with self._lock:
-            # Check for duplicates
+            if len(self._devices) >= self._config.max_devices:
+                raise ConfigurationError(f"Max devices reached: {self._config.max_devices}")
+            
             if final_id in self._devices:
                 raise ConfigurationError(
                     f"Device ID already exists: {final_id}. "
                     "Use unique identifiers or remove existing device first."
                 )
             
-            # Register
             self._devices[final_id] = capability
             self._metadata["devices_registered"] += 1
+        
+        logger.info("device_registered", 
+                   device_id=final_id,
+                   category=capability.category,
+                   protocol=protocol.name)
         
         return capability
     
     def get(self, device_id: str) -> Capability:
-        """
-        Retrieve device capability by ID.
-        
-        Args:
-            device_id: Registered device identifier
-            
-        Returns:
-            Capability instance
-            
-        Raises:
-            DeviceError: If device not found
-            
-        Example:
-            >>> relay = hub.get("light_01")
-            >>> relay.on()
-        """
+        """Retrieve device capability by ID."""
         with self._lock:
             if device_id not in self._devices:
                 raise DeviceError(f"Device not found: {device_id}")
             return self._devices[device_id]
     
     def find(self, **criteria) -> List[Capability]:
-        """
-        Find devices matching criteria.
-        
-        Args:
-            **criteria: Filter by capability attributes
-                - category: str - Capability category name
-                - protocol: str - Protocol name
-                
-        Returns:
-            List of matching Capability instances
-            
-        Example:
-            >>> switches = hub.find(category="switchable")
-            >>> http_devices = hub.find(protocol="http")
-        """
+        """Find devices matching criteria."""
         results = []
         
         with self._lock:
@@ -175,22 +174,7 @@ class Hub:
         category: Optional[str] = None,
         as_dict: bool = False
     ) -> Union[List[str], Dict[str, str]]:
-        """
-        List registered device IDs.
-        
-        Args:
-            category: Optional filter by capability category
-            as_dict: If True, return {id: category} mapping
-            
-        Returns:
-            List of device IDs, or dict if as_dict=True
-            
-        Example:
-            >>> hub.list_devices()
-            ['light_01', 'temp_sensor', 'motor_01']
-            >>> hub.list_devices(category="switchable")
-            ['light_01']
-        """
+        """List registered device IDs."""
         with self._lock:
             if category:
                 items = [
@@ -209,57 +193,142 @@ class Hub:
         return [did for did, _ in items]
     
     def remove(self, device_id: str) -> bool:
-        """
-        Unregister a device.
-        
-        Args:
-            device_id: Device to remove
-            
-        Returns:
-            True if device existed and was removed, False otherwise
-            
-        Example:
-            >>> hub.remove("light_01")
-            True
-        """
+        """Unregister a device."""
         with self._lock:
             if device_id in self._devices:
+                device = self._devices[device_id]
                 del self._devices[device_id]
                 self._metadata["devices_removed"] += 1
-                # Invalidate cache entries for this device
                 self._cache.invalidate(device_id)
+                
+                # Disconnect protocol
+                try:
+                    device.protocol.disconnect()
+                except Exception as e:
+                    logger.warning("protocol_disconnect_failed", 
+                                 device_id=device_id, error=str(e))
+                
+                logger.info("device_removed", device_id=device_id)
                 return True
             return False
     
     def clear(self) -> None:
-        """
-        Remove all devices and clear cache.
-        
-        Example:
-            >>> hub.clear()  # Clean slate
-        """
+        """Remove all devices and clear cache."""
         with self._lock:
+            for device_id, device in list(self._devices.items()):
+                try:
+                    device.protocol.disconnect()
+                except:
+                    pass
+            
             self._devices.clear()
             self._cache.invalidate_all()
             self._metadata["devices_removed"] = self._metadata["devices_registered"]
+            logger.info("hub_cleared")
     
-    def stats(self) -> Dict[str, Any]:
+    async def batch(
+        self,
+        operations: List[Tuple[Capability, str, Dict[str, Any]]],
+        max_concurrent: int = 10,
+        continue_on_error: bool = True
+    ) -> BatchResult:
         """
-        Get Hub runtime statistics.
+        Execute multiple operations concurrently.
+        
+        Args:
+            operations: List of (capability, method_name, kwargs)
+            max_concurrent: Max parallel operations
+            continue_on_error: Don't stop on first failure
         
         Returns:
-            Dict with version, device counts, cache stats, uptime
-            
-        Example:
-            >>> hub.stats()
-            {
-                'version': '0.1.0',
-                'devices_active': 3,
-                'devices_registered_total': 5,
-                'cache_entries': 3,
-                'uptime_seconds': 3600
-            }
+            BatchResult with all results
         """
+        semaphore = asyncio.Semaphore(max_concurrent)
+        results: List[CommandResult] = []
+        
+        async def execute_one(cap, method, kwargs):
+            async with semaphore:
+                try:
+                    if isinstance(cap, AsyncCapability):
+                        method_func = getattr(cap, f"{method}_async", None) or getattr(cap, method)
+                        return await method_func(**kwargs)
+                    else:
+                        # Run sync method in thread pool
+                        loop = asyncio.get_event_loop()
+                        return await loop.run_in_executor(
+                            None, 
+                            lambda: getattr(cap, method)(**kwargs)
+                        )
+                except Exception as e:
+                    return CommandResult(
+                        success=False,
+                        confirmed=False,
+                        status=CommandStatus.FAILED,
+                        device_id=cap.id,
+                        command=method,
+                        error=str(e)
+                    )
+        
+        start = time.time()
+        tasks = [execute_one(cap, method, kwargs) for cap, method, kwargs in operations]
+        
+        if continue_on_error:
+            completed = await asyncio.gather(*tasks, return_exceptions=True)
+            for result in completed:
+                if isinstance(result, Exception):
+                    results.append(CommandResult(
+                        success=False,
+                        confirmed=False,
+                        status=CommandStatus.FAILED,
+                        error=str(result)
+                    ))
+                else:
+                    results.append(result)
+        else:
+            # Stop on first failure
+            for task in asyncio.as_completed(tasks):
+                result = await task
+                results.append(result)
+                if not result.success:
+                    break
+        
+        total_latency = (time.time() - start) * 1000
+        
+        successful = sum(1 for r in results if r.success)
+        confirmed = sum(1 for r in results if r.confirmed)
+        
+        return BatchResult(
+            results=results,
+            total=len(operations),
+            successful=successful,
+            failed=len(results) - successful,
+            confirmed=confirmed,
+            total_latency_ms=total_latency
+        )
+    
+    def on_state_change(
+        self,
+        callback: Callable[[StateChangeEvent], None],
+        device_id: Optional[str] = None,
+        pattern: Optional[str] = None
+    ) -> Callable:
+        """
+        Subscribe to state changes.
+        
+        Returns unsubscribe function.
+        """
+        if not self._event_bus:
+            raise ConfigurationError("Event bus not enabled")
+        
+        if device_id:
+            return self._event_bus.subscribe(device_id, callback)
+        elif pattern:
+            return self._event_bus.subscribe_pattern(pattern, callback)
+        else:
+            return self._event_bus.subscribe_all(callback)
+    
+    def stats(self) -> Dict[str, Any]:
+        """Get Hub runtime statistics."""
         with self._lock:
             uptime = time.time() - self._metadata["created_at"]
             
@@ -269,27 +338,33 @@ class Hub:
                 "devices_registered_total": self._metadata["devices_registered"],
                 "devices_removed_total": self._metadata["devices_removed"],
                 "cache_stats": self._cache.stats(),
+                "event_stats": self._event_bus.stats() if self._event_bus else None,
                 "uptime_seconds": round(uptime, 2),
+                "metrics": self._metrics if self._config.metrics_enabled else None,
             }
     
     def __getitem__(self, device_id: str) -> Capability:
-        """Dictionary-style access: hub["device_id"]"""
         return self.get(device_id)
     
     def __contains__(self, device_id: str) -> bool:
-        """Membership test: "device_id" in hub"""
         with self._lock:
             return device_id in self._devices
     
     def __len__(self) -> int:
-        """Number of registered devices: len(hub)"""
         with self._lock:
             return len(self._devices)
     
     def __iter__(self) -> Iterator[str]:
-        """Iterate over device IDs: for device_id in hub"""
         with self._lock:
             return iter(list(self._devices.keys()))
     
     def __repr__(self) -> str:
         return f"<Hub devices={len(self)} version={self._metadata['version']}>"
+    
+    async def __aenter__(self):
+        """Async context manager entry."""
+        return self
+    
+    async def __aexit__(self, exc_type, exc, tb):
+        """Async context manager exit."""
+        self.clear()
