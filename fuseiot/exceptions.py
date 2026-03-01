@@ -76,6 +76,11 @@ class ProtocolError(DeviceError):
         self.original_error = original_error
 
 
+class ConnectionError(DeviceError):
+    """Raised when a connection cannot be established or is lost."""
+    pass
+
+
 class CommandError(DeviceError):
     """Command execution failed."""
     

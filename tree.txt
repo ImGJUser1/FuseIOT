@@ -1,91 +1,2021 @@
-â”œâ”€â”€ .qodo
-    â”œâ”€â”€ agents
-    â”œâ”€â”€ workflows
-â”œâ”€â”€ examples
-    â”œâ”€â”€ advanced_thermostat.py
-    â”œâ”€â”€ async_example.py
-    â”œâ”€â”€ basic_relay.py
-    â”œâ”€â”€ batch_control.py
-    â”œâ”€â”€ config.yaml
-    â”œâ”€â”€ thermostat.py
-â”œâ”€â”€ fuseiot
-    â”œâ”€â”€ capabilities
-        â”œâ”€â”€ base.py
-        â”œâ”€â”€ composite.py
-        â”œâ”€â”€ dimmable.py
-        â”œâ”€â”€ energy_monitor.py
-        â”œâ”€â”€ lock.py
-        â”œâ”€â”€ motor.py
-        â”œâ”€â”€ rgb_light.py
-        â”œâ”€â”€ sensor.py
-        â”œâ”€â”€ switchable.py
-        â”œâ”€â”€ thermostat.py
-        â”œâ”€â”€ __init__.py
-    â”œâ”€â”€ cli
-        â”œâ”€â”€ main.py
-    â”œâ”€â”€ cloud
-        â”œâ”€â”€ aws_iot.py
-        â”œâ”€â”€ azure_iot.py
-        â”œâ”€â”€ base.py
-        â”œâ”€â”€ gcp_iot.py
-        â”œâ”€â”€ __init__.py
-    â”œâ”€â”€ dashboard
-        â”œâ”€â”€ templates
-            â”œâ”€â”€ index.html
-        â”œâ”€â”€ app.py
-        â”œâ”€â”€ __init__.py
-    â”œâ”€â”€ discovery
-        â”œâ”€â”€ mdns.py
-    â”œâ”€â”€ edge
-        â”œâ”€â”€ rules.py
-    â”œâ”€â”€ monitoring
-        â”œâ”€â”€ health.py
-        â”œâ”€â”€ metrics.py
-    â”œâ”€â”€ protocols
-        â”œâ”€â”€ base.py
-        â”œâ”€â”€ http.py
-        â”œâ”€â”€ https.py
-        â”œâ”€â”€ mqtt.py
-        â”œâ”€â”€ mqtts.py
-        â”œâ”€â”€ serial.py
-        â”œâ”€â”€ web_socket.py
-        â”œâ”€â”€ __init__.py
-    â”œâ”€â”€ simulation
-        â”œâ”€â”€ virtual_device.py
-    â”œâ”€â”€ state
-        â”œâ”€â”€ cache.py
-        â”œâ”€â”€ confirm.py
-        â”œâ”€â”€ events.py
-        â”œâ”€â”€ history.py
-        â”œâ”€â”€ persistance.py
-        â”œâ”€â”€ __init__.py
-    â”œâ”€â”€ utils
-        â”œâ”€â”€ async_tools.py
-        â”œâ”€â”€ circuit_breaker.py
-        â”œâ”€â”€ rate_limiter.py
-        â”œâ”€â”€ retry.py
-        â”œâ”€â”€ validation.py
-        â”œâ”€â”€ __init__.py
-    â”œâ”€â”€ exceptions.py
-    â”œâ”€â”€ hub.py
-    â”œâ”€â”€ result.py
-    â”œâ”€â”€ types.py
-    â”œâ”€â”€ __init__.py
-    â”œâ”€â”€ __version__.py
-â”œâ”€â”€ tests
-    â”œâ”€â”€ conftest.py
-    â”œâ”€â”€ test_http.py
-    â”œâ”€â”€ test_hub.py
-    â”œâ”€â”€ test_integration.py
-    â”œâ”€â”€ test_motor.py
-    â”œâ”€â”€ test_mqtt.py
-    â”œâ”€â”€ test_sensor.py
-    â”œâ”€â”€ test_switchable.py
-    â”œâ”€â”€ __init__.py
-â”œâ”€â”€ config.py
-â”œâ”€â”€ LICENSE
-â”œâ”€â”€ logging_config.py
-â”œâ”€â”€ pyproject.toml
-â”œâ”€â”€ README.md
-â”œâ”€â”€ result.py
-â”œâ”€â”€ tree.txt
++-- .qodo
+¦   +-- agents
+¦   +-- workflows
++-- .venv-1
+¦   +-- Include
+¦   +-- Lib
+¦   ¦   +-- site-packages
+¦   ¦       +-- _distutils_hack
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- override.py
+¦   ¦       +-- _pytest
+¦   ¦       ¦   +-- _code
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- code.py
+¦   ¦       ¦   ¦   +-- source.py
+¦   ¦       ¦   +-- _io
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- pprint.py
+¦   ¦       ¦   ¦   +-- saferepr.py
+¦   ¦       ¦   ¦   +-- terminalwriter.py
+¦   ¦       ¦   ¦   +-- wcwidth.py
+¦   ¦       ¦   +-- _py
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- error.py
+¦   ¦       ¦   ¦   +-- path.py
+¦   ¦       ¦   +-- assertion
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- rewrite.py
+¦   ¦       ¦   ¦   +-- truncate.py
+¦   ¦       ¦   ¦   +-- util.py
+¦   ¦       ¦   +-- config
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- argparsing.py
+¦   ¦       ¦   ¦   +-- compat.py
+¦   ¦       ¦   ¦   +-- exceptions.py
+¦   ¦       ¦   ¦   +-- findpaths.py
+¦   ¦       ¦   +-- mark
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- expression.py
+¦   ¦       ¦   ¦   +-- structures.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _argcomplete.py
+¦   ¦       ¦   +-- _version.py
+¦   ¦       ¦   +-- cacheprovider.py
+¦   ¦       ¦   +-- capture.py
+¦   ¦       ¦   +-- compat.py
+¦   ¦       ¦   +-- debugging.py
+¦   ¦       ¦   +-- deprecated.py
+¦   ¦       ¦   +-- doctest.py
+¦   ¦       ¦   +-- faulthandler.py
+¦   ¦       ¦   +-- fixtures.py
+¦   ¦       ¦   +-- freeze_support.py
+¦   ¦       ¦   +-- helpconfig.py
+¦   ¦       ¦   +-- hookspec.py
+¦   ¦       ¦   +-- junitxml.py
+¦   ¦       ¦   +-- legacypath.py
+¦   ¦       ¦   +-- logging.py
+¦   ¦       ¦   +-- main.py
+¦   ¦       ¦   +-- monkeypatch.py
+¦   ¦       ¦   +-- nodes.py
+¦   ¦       ¦   +-- outcomes.py
+¦   ¦       ¦   +-- pastebin.py
+¦   ¦       ¦   +-- pathlib.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- pytester.py
+¦   ¦       ¦   +-- pytester_assertions.py
+¦   ¦       ¦   +-- python.py
+¦   ¦       ¦   +-- python_api.py
+¦   ¦       ¦   +-- raises.py
+¦   ¦       ¦   +-- recwarn.py
+¦   ¦       ¦   +-- runner.py
+¦   ¦       ¦   +-- scope.py
+¦   ¦       ¦   +-- setuponly.py
+¦   ¦       ¦   +-- setupplan.py
+¦   ¦       ¦   +-- skipping.py
+¦   ¦       ¦   +-- stash.py
+¦   ¦       ¦   +-- stepwise.py
+¦   ¦       ¦   +-- subtests.py
+¦   ¦       ¦   +-- terminal.py
+¦   ¦       ¦   +-- terminalprogress.py
+¦   ¦       ¦   +-- threadexception.py
+¦   ¦       ¦   +-- timing.py
+¦   ¦       ¦   +-- tmpdir.py
+¦   ¦       ¦   +-- tracemalloc.py
+¦   ¦       ¦   +-- unittest.py
+¦   ¦       ¦   +-- unraisableexception.py
+¦   ¦       ¦   +-- warning_types.py
+¦   ¦       ¦   +-- warnings.py
+¦   ¦       +-- _yaml
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       +-- annotated_types
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- test_cases.py
+¦   ¦       +-- annotated_types-0.7.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- backports
+¦   ¦       ¦   +-- tarfile
+¦   ¦       ¦   ¦   +-- compat
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- py38.py
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- __main__.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       +-- backports.tarfile-1.2.0.dist-info
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- LICENSE
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- build-1.4.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- REQUESTED
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- certifi
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __main__.py
+¦   ¦       ¦   +-- cacert.pem
+¦   ¦       ¦   +-- core.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- certifi-2026.2.25.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- charset_normalizer
+¦   ¦       ¦   +-- cli
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- __main__.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __main__.py
+¦   ¦       ¦   +-- api.py
+¦   ¦       ¦   +-- cd.py
+¦   ¦       ¦   +-- constant.py
+¦   ¦       ¦   +-- legacy.py
+¦   ¦       ¦   +-- md.cp311-win_amd64.pyd
+¦   ¦       ¦   +-- md.py
+¦   ¦       ¦   +-- md__mypyc.cp311-win_amd64.pyd
+¦   ¦       ¦   +-- models.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- utils.py
+¦   ¦       ¦   +-- version.py
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- click
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _compat.py
+¦   ¦       ¦   +-- _termui_impl.py
+¦   ¦       ¦   +-- _textwrap.py
+¦   ¦       ¦   +-- _utils.py
+¦   ¦       ¦   +-- _winconsole.py
+¦   ¦       ¦   +-- decorators.py
+¦   ¦       ¦   +-- exceptions.py
+¦   ¦       ¦   +-- formatting.py
+¦   ¦       ¦   +-- globals.py
+¦   ¦       ¦   +-- parser.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- shell_completion.py
+¦   ¦       ¦   +-- termui.py
+¦   ¦       ¦   +-- testing.py
+¦   ¦       ¦   +-- types.py
+¦   ¦       ¦   +-- utils.py
+¦   ¦       +-- click-8.3.1.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- colorama
+¦   ¦       ¦   +-- tests
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- ansi_test.py
+¦   ¦       ¦   ¦   +-- ansitowin32_test.py
+¦   ¦       ¦   ¦   +-- initialise_test.py
+¦   ¦       ¦   ¦   +-- isatty_test.py
+¦   ¦       ¦   ¦   +-- utils.py
+¦   ¦       ¦   ¦   +-- winterm_test.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- ansi.py
+¦   ¦       ¦   +-- ansitowin32.py
+¦   ¦       ¦   +-- initialise.py
+¦   ¦       ¦   +-- win32.py
+¦   ¦       ¦   +-- winterm.py
+¦   ¦       +-- colorama-0.4.6.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- docutils
+¦   ¦       ¦   +-- languages
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- af.py
+¦   ¦       ¦   ¦   +-- ar.py
+¦   ¦       ¦   ¦   +-- ca.py
+¦   ¦       ¦   ¦   +-- cs.py
+¦   ¦       ¦   ¦   +-- da.py
+¦   ¦       ¦   ¦   +-- de.py
+¦   ¦       ¦   ¦   +-- en.py
+¦   ¦       ¦   ¦   +-- eo.py
+¦   ¦       ¦   ¦   +-- es.py
+¦   ¦       ¦   ¦   +-- fa.py
+¦   ¦       ¦   ¦   +-- fi.py
+¦   ¦       ¦   ¦   +-- fr.py
+¦   ¦       ¦   ¦   +-- gl.py
+¦   ¦       ¦   ¦   +-- he.py
+¦   ¦       ¦   ¦   +-- it.py
+¦   ¦       ¦   ¦   +-- ja.py
+¦   ¦       ¦   ¦   +-- ka.py
+¦   ¦       ¦   ¦   +-- ko.py
+¦   ¦       ¦   ¦   +-- lt.py
+¦   ¦       ¦   ¦   +-- lv.py
+¦   ¦       ¦   ¦   +-- nl.py
+¦   ¦       ¦   ¦   +-- pl.py
+¦   ¦       ¦   ¦   +-- pt_br.py
+¦   ¦       ¦   ¦   +-- ru.py
+¦   ¦       ¦   ¦   +-- sk.py
+¦   ¦       ¦   ¦   +-- sv.py
+¦   ¦       ¦   ¦   +-- uk.py
+¦   ¦       ¦   ¦   +-- zh_cn.py
+¦   ¦       ¦   ¦   +-- zh_tw.py
+¦   ¦       ¦   +-- parsers
+¦   ¦       ¦   ¦   +-- rst
+¦   ¦       ¦   ¦   ¦   +-- directives
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- admonitions.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- body.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- html.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- images.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- misc.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- parts.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- references.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- tables.py
+¦   ¦       ¦   ¦   ¦   +-- include
+¦   ¦       ¦   ¦   ¦   ¦   +-- html-roles.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isoamsa.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isoamsb.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isoamsc.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isoamsn.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isoamso.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isoamsr.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isobox.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isocyr1.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isocyr2.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isodia.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isogrk1.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isogrk2.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isogrk3.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isogrk4.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isogrk4-wide.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isolat1.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isolat2.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isomfrk.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isomfrk-wide.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isomopf.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isomopf-wide.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isomscr.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isomscr-wide.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isonum.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isopub.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- isotech.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- mmlalias.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- mmlextra-wide.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- README.rst
+¦   ¦       ¦   ¦   ¦   ¦   +-- xhtml1-lat1.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- xhtml1-special.txt
+¦   ¦       ¦   ¦   ¦   ¦   +-- xhtml1-symbol.txt
+¦   ¦       ¦   ¦   ¦   +-- languages
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- af.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ar.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ca.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- cs.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- da.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- de.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- en.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- eo.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- es.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- fa.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- fi.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- fr.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- gl.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- he.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ja.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ka.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ko.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- lt.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- lv.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- nl.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- pl.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- pt_br.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ru.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- sk.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- sv.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- uk.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- zh_cn.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- zh_tw.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- roles.py
+¦   ¦       ¦   ¦   ¦   +-- states.py
+¦   ¦       ¦   ¦   ¦   +-- tableparser.py
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- commonmark_wrapper.py
+¦   ¦       ¦   ¦   +-- docutils_xml.py
+¦   ¦       ¦   ¦   +-- null.py
+¦   ¦       ¦   ¦   +-- recommonmark_wrapper.py
+¦   ¦       ¦   +-- readers
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- doctree.py
+¦   ¦       ¦   ¦   +-- pep.py
+¦   ¦       ¦   ¦   +-- standalone.py
+¦   ¦       ¦   +-- transforms
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- components.py
+¦   ¦       ¦   ¦   +-- frontmatter.py
+¦   ¦       ¦   ¦   +-- misc.py
+¦   ¦       ¦   ¦   +-- parts.py
+¦   ¦       ¦   ¦   +-- peps.py
+¦   ¦       ¦   ¦   +-- references.py
+¦   ¦       ¦   ¦   +-- universal.py
+¦   ¦       ¦   ¦   +-- writer_aux.py
+¦   ¦       ¦   +-- utils
+¦   ¦       ¦   ¦   +-- math
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- latex2mathml.py
+¦   ¦       ¦   ¦   ¦   +-- math2html.py
+¦   ¦       ¦   ¦   ¦   +-- mathalphabet2unichar.py
+¦   ¦       ¦   ¦   ¦   +-- mathml_elements.py
+¦   ¦       ¦   ¦   ¦   +-- tex2unichar.py
+¦   ¦       ¦   ¦   ¦   +-- unichar2tex.py
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _roman_numerals.py
+¦   ¦       ¦   ¦   +-- _typing.py
+¦   ¦       ¦   ¦   +-- code_analyzer.py
+¦   ¦       ¦   ¦   +-- punctuation_chars.py
+¦   ¦       ¦   ¦   +-- smartquotes.py
+¦   ¦       ¦   ¦   +-- urischemes.py
+¦   ¦       ¦   +-- writers
+¦   ¦       ¦   ¦   +-- html4css1
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- html4css1.css
+¦   ¦       ¦   ¦   ¦   +-- template.txt
+¦   ¦       ¦   ¦   +-- html5_polyglot
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- italic-field-names.css
+¦   ¦       ¦   ¦   ¦   +-- math.css
+¦   ¦       ¦   ¦   ¦   +-- minimal.css
+¦   ¦       ¦   ¦   ¦   +-- plain.css
+¦   ¦       ¦   ¦   ¦   +-- responsive.css
+¦   ¦       ¦   ¦   ¦   +-- template.txt
+¦   ¦       ¦   ¦   ¦   +-- tuftig.css
+¦   ¦       ¦   ¦   +-- latex2e
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- default.tex
+¦   ¦       ¦   ¦   ¦   +-- docutils.sty
+¦   ¦       ¦   ¦   ¦   +-- titlepage.tex
+¦   ¦       ¦   ¦   ¦   +-- titlingpage.tex
+¦   ¦       ¦   ¦   ¦   +-- xelatex.tex
+¦   ¦       ¦   ¦   +-- odf_odt
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- prepstyles.py
+¦   ¦       ¦   ¦   ¦   +-- pygmentsformatter.py
+¦   ¦       ¦   ¦   ¦   +-- styles.odt
+¦   ¦       ¦   ¦   +-- pep_html
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- pep.css
+¦   ¦       ¦   ¦   ¦   +-- template.txt
+¦   ¦       ¦   ¦   +-- s5_html
+¦   ¦       ¦   ¦   ¦   +-- themes
+¦   ¦       ¦   ¦   ¦   ¦   +-- big-black
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- __base__
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- framing.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- pretty.css
+¦   ¦       ¦   ¦   ¦   ¦   +-- big-white
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- framing.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- pretty.css
+¦   ¦       ¦   ¦   ¦   ¦   +-- default
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- framing.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- opera.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- outline.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- pretty.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- print.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- s5-core.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- slides.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- slides.js
+¦   ¦       ¦   ¦   ¦   ¦   +-- medium-black
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- __base__
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- pretty.css
+¦   ¦       ¦   ¦   ¦   ¦   +-- medium-white
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- framing.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- pretty.css
+¦   ¦       ¦   ¦   ¦   ¦   +-- small-black
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- __base__
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- pretty.css
+¦   ¦       ¦   ¦   ¦   ¦   +-- small-white
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- framing.css
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- pretty.css
+¦   ¦       ¦   ¦   ¦   ¦   +-- README.rst
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- xetex
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _html_base.py
+¦   ¦       ¦   ¦   +-- docutils_xml.py
+¦   ¦       ¦   ¦   +-- manpage.py
+¦   ¦       ¦   ¦   +-- null.py
+¦   ¦       ¦   ¦   +-- pseudoxml.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __main__.py
+¦   ¦       ¦   +-- core.py
+¦   ¦       ¦   +-- docutils.conf
+¦   ¦       ¦   +-- examples.py
+¦   ¦       ¦   +-- frontend.py
+¦   ¦       ¦   +-- io.py
+¦   ¦       ¦   +-- nodes.py
+¦   ¦       ¦   +-- statemachine.py
+¦   ¦       +-- docutils-0.22.4.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- licenses
+¦   ¦       ¦   ¦   ¦   +-- BSD-0-Clause.rst
+¦   ¦       ¦   ¦   ¦   +-- BSD-2-Clause.rst
+¦   ¦       ¦   ¦   ¦   +-- gpl-3-0.txt
+¦   ¦       ¦   ¦   +-- COPYING.rst
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- fuseiot-1.0.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- direct_url.json
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- REQUESTED
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- id
+¦   ¦       ¦   +-- _internal
+¦   ¦       ¦   ¦   +-- oidc
+¦   ¦       ¦   ¦       +-- __init__.py
+¦   ¦       ¦   ¦       +-- ambient.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __main__.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- codec.py
+¦   ¦       ¦   +-- compat.py
+¦   ¦       ¦   +-- core.py
+¦   ¦       ¦   +-- idnadata.py
+¦   ¦       ¦   +-- intranges.py
+¦   ¦       ¦   +-- package_data.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- uts46data.py
+¦   ¦       +-- idna-3.11.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       +-- importlib_metadata
+¦   ¦       ¦   +-- compat
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- py311.py
+¦   ¦       ¦   ¦   +-- py39.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _adapters.py
+¦   ¦       ¦   +-- _collections.py
+¦   ¦       ¦   +-- _compat.py
+¦   ¦       ¦   +-- _functools.py
+¦   ¦       ¦   +-- _itertools.py
+¦   ¦       ¦   +-- _meta.py
+¦   ¦       ¦   +-- _text.py
+¦   ¦       ¦   +-- _typing.py
+¦   ¦       ¦   +-- diagnose.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- importlib_metadata-8.7.1.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- iniconfig
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _parse.py
+¦   ¦       ¦   +-- _version.py
+¦   ¦       ¦   +-- exceptions.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- iniconfig-2.3.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       ¦   +-- classes
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- ancestry.py
+¦   ¦       ¦   ¦   +-- meta.py
+¦   ¦       ¦   ¦   +-- properties.py
+¦   ¦       ¦   ¦   +-- py.typed
+¦   ¦       ¦   +-- context
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- py.typed
+¦   ¦       ¦   +-- functools
+¦   ¦       ¦       +-- __init__.py
+¦   ¦       ¦       +-- __init__.pyi
+¦   ¦       +-- jaraco.classes-3.4.0.dist-info
+¦   ¦       ¦   +-- LICENSE
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- jaraco_context-6.1.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- jaraco_functools-4.4.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- keyring
+¦   ¦       ¦   +-- backends
+¦   ¦       ¦   ¦   +-- macOS
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- api.py
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- chainer.py
+¦   ¦       ¦   ¦   +-- fail.py
+¦   ¦       ¦   ¦   +-- kwallet.py
+¦   ¦       ¦   ¦   +-- libsecret.py
+¦   ¦       ¦   ¦   +-- null.py
+¦   ¦       ¦   ¦   +-- SecretService.py
+¦   ¦       ¦   ¦   +-- Windows.py
+¦   ¦       ¦   +-- compat
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- properties.py
+¦   ¦       ¦   ¦   +-- py312.py
+¦   ¦       ¦   +-- testing
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- backend.py
+¦   ¦       ¦   ¦   +-- util.py
+¦   ¦       ¦   +-- util
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- platform_.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __main__.py
+¦   ¦       ¦   +-- backend.py
+¦   ¦       ¦   +-- backend_complete.bash
+¦   ¦       ¦   +-- backend_complete.zsh
+¦   ¦       ¦   +-- cli.py
+¦   ¦       ¦   +-- completion.py
+¦   ¦       ¦   +-- core.py
+¦   ¦       ¦   +-- credentials.py
+¦   ¦       ¦   +-- devpi_client.py
+¦   ¦       ¦   +-- errors.py
+¦   ¦       ¦   +-- http.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- keyring-25.7.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- markdown_it
+¦   ¦       ¦   +-- cli
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- parse.py
+¦   ¦       ¦   +-- common
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- entities.py
+¦   ¦       ¦   ¦   +-- html_blocks.py
+¦   ¦       ¦   ¦   +-- html_re.py
+¦   ¦       ¦   ¦   +-- normalize_url.py
+¦   ¦       ¦   ¦   +-- utils.py
+¦   ¦       ¦   +-- helpers
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- parse_link_destination.py
+¦   ¦       ¦   ¦   +-- parse_link_label.py
+¦   ¦       ¦   ¦   +-- parse_link_title.py
+¦   ¦       ¦   +-- presets
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- commonmark.py
+¦   ¦       ¦   ¦   +-- default.py
+¦   ¦       ¦   ¦   +-- zero.py
+¦   ¦       ¦   +-- rules_block
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- blockquote.py
+¦   ¦       ¦   ¦   +-- code.py
+¦   ¦       ¦   ¦   +-- fence.py
+¦   ¦       ¦   ¦   +-- heading.py
+¦   ¦       ¦   ¦   +-- hr.py
+¦   ¦       ¦   ¦   +-- html_block.py
+¦   ¦       ¦   ¦   +-- lheading.py
+¦   ¦       ¦   ¦   +-- list.py
+¦   ¦       ¦   ¦   +-- paragraph.py
+¦   ¦       ¦   ¦   +-- reference.py
+¦   ¦       ¦   ¦   +-- state_block.py
+¦   ¦       ¦   ¦   +-- table.py
+¦   ¦       ¦   +-- rules_core
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- block.py
+¦   ¦       ¦   ¦   +-- inline.py
+¦   ¦       ¦   ¦   +-- linkify.py
+¦   ¦       ¦   ¦   +-- normalize.py
+¦   ¦       ¦   ¦   +-- replacements.py
+¦   ¦       ¦   ¦   +-- smartquotes.py
+¦   ¦       ¦   ¦   +-- state_core.py
+¦   ¦       ¦   ¦   +-- text_join.py
+¦   ¦       ¦   +-- rules_inline
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- autolink.py
+¦   ¦       ¦   ¦   +-- backticks.py
+¦   ¦       ¦   ¦   +-- balance_pairs.py
+¦   ¦       ¦   ¦   +-- emphasis.py
+¦   ¦       ¦   ¦   +-- entity.py
+¦   ¦       ¦   ¦   +-- escape.py
+¦   ¦       ¦   ¦   +-- fragments_join.py
+¦   ¦       ¦   ¦   +-- html_inline.py
+¦   ¦       ¦   ¦   +-- image.py
+¦   ¦       ¦   ¦   +-- link.py
+¦   ¦       ¦   ¦   +-- linkify.py
+¦   ¦       ¦   ¦   +-- newline.py
+¦   ¦       ¦   ¦   +-- state_inline.py
+¦   ¦       ¦   ¦   +-- strikethrough.py
+¦   ¦       ¦   ¦   +-- text.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _compat.py
+¦   ¦       ¦   +-- _punycode.py
+¦   ¦       ¦   +-- main.py
+¦   ¦       ¦   +-- parser_block.py
+¦   ¦       ¦   +-- parser_core.py
+¦   ¦       ¦   +-- parser_inline.py
+¦   ¦       ¦   +-- port.yaml
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- renderer.py
+¦   ¦       ¦   +-- ruler.py
+¦   ¦       ¦   +-- token.py
+¦   ¦       ¦   +-- tree.py
+¦   ¦       ¦   +-- utils.py
+¦   ¦       +-- markdown_it_py-4.0.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   ¦   +-- LICENSE.markdown-it
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- mdurl
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _decode.py
+¦   ¦       ¦   +-- _encode.py
+¦   ¦       ¦   +-- _format.py
+¦   ¦       ¦   +-- _parse.py
+¦   ¦       ¦   +-- _url.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- mdurl-0.1.2.dist-info
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- LICENSE
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- more_itertools
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __init__.pyi
+¦   ¦       ¦   +-- more.py
+¦   ¦       ¦   +-- more.pyi
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- recipes.py
+¦   ¦       ¦   +-- recipes.pyi
+¦   ¦       +-- more_itertools-10.8.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- nh3
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __init__.pyi
+¦   ¦       ¦   +-- nh3.pyd
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- nh3-0.3.3.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- sboms
+¦   ¦       ¦   ¦   +-- nh3.cyclonedx.json
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- packaging
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _spdx.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _elffile.py
+¦   ¦       ¦   +-- _manylinux.py
+¦   ¦       ¦   +-- _musllinux.py
+¦   ¦       ¦   +-- _parser.py
+¦   ¦       ¦   +-- _structures.py
+¦   ¦       ¦   +-- _tokenizer.py
+¦   ¦       ¦   +-- markers.py
+¦   ¦       ¦   +-- metadata.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- pylock.py
+¦   ¦       ¦   +-- specifiers.py
+¦   ¦       ¦   +-- tags.py
+¦   ¦       ¦   +-- utils.py
+¦   ¦       ¦   +-- version.py
+¦   ¦       +-- packaging-26.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   ¦   +-- LICENSE.APACHE
+¦   ¦       ¦   ¦   +-- LICENSE.BSD
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- pip
+¦   ¦       ¦   +-- _internal
+¦   ¦       ¦   ¦   +-- cli
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- autocompletion.py
+¦   ¦       ¦   ¦   ¦   +-- base_command.py
+¦   ¦       ¦   ¦   ¦   +-- cmdoptions.py
+¦   ¦       ¦   ¦   ¦   +-- command_context.py
+¦   ¦       ¦   ¦   ¦   +-- main.py
+¦   ¦       ¦   ¦   ¦   +-- main_parser.py
+¦   ¦       ¦   ¦   ¦   +-- parser.py
+¦   ¦       ¦   ¦   ¦   +-- progress_bars.py
+¦   ¦       ¦   ¦   ¦   +-- req_command.py
+¦   ¦       ¦   ¦   ¦   +-- spinners.py
+¦   ¦       ¦   ¦   ¦   +-- status_codes.py
+¦   ¦       ¦   ¦   +-- commands
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- cache.py
+¦   ¦       ¦   ¦   ¦   +-- check.py
+¦   ¦       ¦   ¦   ¦   +-- completion.py
+¦   ¦       ¦   ¦   ¦   +-- configuration.py
+¦   ¦       ¦   ¦   ¦   +-- debug.py
+¦   ¦       ¦   ¦   ¦   +-- download.py
+¦   ¦       ¦   ¦   ¦   +-- freeze.py
+¦   ¦       ¦   ¦   ¦   +-- hash.py
+¦   ¦       ¦   ¦   ¦   +-- help.py
+¦   ¦       ¦   ¦   ¦   +-- index.py
+¦   ¦       ¦   ¦   ¦   +-- inspect.py
+¦   ¦       ¦   ¦   ¦   +-- install.py
+¦   ¦       ¦   ¦   ¦   +-- list.py
+¦   ¦       ¦   ¦   ¦   +-- search.py
+¦   ¦       ¦   ¦   ¦   +-- show.py
+¦   ¦       ¦   ¦   ¦   +-- uninstall.py
+¦   ¦       ¦   ¦   ¦   +-- wheel.py
+¦   ¦       ¦   ¦   +-- distributions
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- base.py
+¦   ¦       ¦   ¦   ¦   +-- installed.py
+¦   ¦       ¦   ¦   ¦   +-- sdist.py
+¦   ¦       ¦   ¦   ¦   +-- wheel.py
+¦   ¦       ¦   ¦   +-- index
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- collector.py
+¦   ¦       ¦   ¦   ¦   +-- package_finder.py
+¦   ¦       ¦   ¦   ¦   +-- sources.py
+¦   ¦       ¦   ¦   +-- locations
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _distutils.py
+¦   ¦       ¦   ¦   ¦   +-- _sysconfig.py
+¦   ¦       ¦   ¦   ¦   +-- base.py
+¦   ¦       ¦   ¦   +-- metadata
+¦   ¦       ¦   ¦   ¦   +-- importlib
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- _compat.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- _dists.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- _envs.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _json.py
+¦   ¦       ¦   ¦   ¦   +-- base.py
+¦   ¦       ¦   ¦   ¦   +-- pkg_resources.py
+¦   ¦       ¦   ¦   +-- models
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- candidate.py
+¦   ¦       ¦   ¦   ¦   +-- direct_url.py
+¦   ¦       ¦   ¦   ¦   +-- format_control.py
+¦   ¦       ¦   ¦   ¦   +-- index.py
+¦   ¦       ¦   ¦   ¦   +-- installation_report.py
+¦   ¦       ¦   ¦   ¦   +-- link.py
+¦   ¦       ¦   ¦   ¦   +-- scheme.py
+¦   ¦       ¦   ¦   ¦   +-- search_scope.py
+¦   ¦       ¦   ¦   ¦   +-- selection_prefs.py
+¦   ¦       ¦   ¦   ¦   +-- target_python.py
+¦   ¦       ¦   ¦   ¦   +-- wheel.py
+¦   ¦       ¦   ¦   +-- network
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- auth.py
+¦   ¦       ¦   ¦   ¦   +-- cache.py
+¦   ¦       ¦   ¦   ¦   +-- download.py
+¦   ¦       ¦   ¦   ¦   +-- lazy_wheel.py
+¦   ¦       ¦   ¦   ¦   +-- session.py
+¦   ¦       ¦   ¦   ¦   +-- utils.py
+¦   ¦       ¦   ¦   ¦   +-- xmlrpc.py
+¦   ¦       ¦   ¦   +-- operations
+¦   ¦       ¦   ¦   ¦   +-- install
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- editable_legacy.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- wheel.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- check.py
+¦   ¦       ¦   ¦   ¦   +-- freeze.py
+¦   ¦       ¦   ¦   ¦   +-- prepare.py
+¦   ¦       ¦   ¦   +-- req
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- constructors.py
+¦   ¦       ¦   ¦   ¦   +-- req_file.py
+¦   ¦       ¦   ¦   ¦   +-- req_install.py
+¦   ¦       ¦   ¦   ¦   +-- req_set.py
+¦   ¦       ¦   ¦   ¦   +-- req_uninstall.py
+¦   ¦       ¦   ¦   +-- resolution
+¦   ¦       ¦   ¦   ¦   +-- legacy
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- resolver.py
+¦   ¦       ¦   ¦   ¦   +-- resolvelib
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- base.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- candidates.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- factory.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- found_candidates.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- provider.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- reporter.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- requirements.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- resolver.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- base.py
+¦   ¦       ¦   ¦   +-- utils
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _jaraco_text.py
+¦   ¦       ¦   ¦   ¦   +-- _log.py
+¦   ¦       ¦   ¦   ¦   +-- appdirs.py
+¦   ¦       ¦   ¦   ¦   +-- compat.py
+¦   ¦       ¦   ¦   ¦   +-- compatibility_tags.py
+¦   ¦       ¦   ¦   ¦   +-- datetime.py
+¦   ¦       ¦   ¦   ¦   +-- deprecation.py
+¦   ¦       ¦   ¦   ¦   +-- direct_url_helpers.py
+¦   ¦       ¦   ¦   ¦   +-- egg_link.py
+¦   ¦       ¦   ¦   ¦   +-- encoding.py
+¦   ¦       ¦   ¦   ¦   +-- entrypoints.py
+¦   ¦       ¦   ¦   ¦   +-- filesystem.py
+¦   ¦       ¦   ¦   ¦   +-- filetypes.py
+¦   ¦       ¦   ¦   ¦   +-- glibc.py
+¦   ¦       ¦   ¦   ¦   +-- hashes.py
+¦   ¦       ¦   ¦   ¦   +-- logging.py
+¦   ¦       ¦   ¦   ¦   +-- misc.py
+¦   ¦       ¦   ¦   ¦   +-- models.py
+¦   ¦       ¦   ¦   ¦   +-- packaging.py
+¦   ¦       ¦   ¦   ¦   +-- setuptools_build.py
+¦   ¦       ¦   ¦   ¦   +-- subprocess.py
+¦   ¦       ¦   ¦   ¦   +-- temp_dir.py
+¦   ¦       ¦   ¦   ¦   +-- unpacking.py
+¦   ¦       ¦   ¦   ¦   +-- urls.py
+¦   ¦       ¦   ¦   ¦   +-- virtualenv.py
+¦   ¦       ¦   ¦   ¦   +-- wheel.py
+¦   ¦       ¦   ¦   +-- vcs
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- bazaar.py
+¦   ¦       ¦   ¦   ¦   +-- git.py
+¦   ¦       ¦   ¦   ¦   +-- mercurial.py
+¦   ¦       ¦   ¦   ¦   +-- subversion.py
+¦   ¦       ¦   ¦   ¦   +-- versioncontrol.py
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- build_env.py
+¦   ¦       ¦   ¦   +-- cache.py
+¦   ¦       ¦   ¦   +-- configuration.py
+¦   ¦       ¦   ¦   +-- exceptions.py
+¦   ¦       ¦   ¦   +-- main.py
+¦   ¦       ¦   ¦   +-- pyproject.py
+¦   ¦       ¦   ¦   +-- self_outdated_check.py
+¦   ¦       ¦   ¦   +-- wheel_builder.py
+¦   ¦       ¦   +-- _vendor
+¦   ¦       ¦   ¦   +-- cachecontrol
+¦   ¦       ¦   ¦   ¦   +-- caches
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- file_cache.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- redis_cache.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _cmd.py
+¦   ¦       ¦   ¦   ¦   +-- adapter.py
+¦   ¦       ¦   ¦   ¦   +-- cache.py
+¦   ¦       ¦   ¦   ¦   +-- controller.py
+¦   ¦       ¦   ¦   ¦   +-- filewrapper.py
+¦   ¦       ¦   ¦   ¦   +-- heuristics.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   ¦   +-- serialize.py
+¦   ¦       ¦   ¦   ¦   +-- wrapper.py
+¦   ¦       ¦   ¦   +-- certifi
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __main__.py
+¦   ¦       ¦   ¦   ¦   +-- cacert.pem
+¦   ¦       ¦   ¦   ¦   +-- core.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   +-- chardet
+¦   ¦       ¦   ¦   ¦   +-- cli
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- chardetect.py
+¦   ¦       ¦   ¦   ¦   +-- metadata
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- languages.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- big5freq.py
+¦   ¦       ¦   ¦   ¦   +-- big5prober.py
+¦   ¦       ¦   ¦   ¦   +-- chardistribution.py
+¦   ¦       ¦   ¦   ¦   +-- charsetgroupprober.py
+¦   ¦       ¦   ¦   ¦   +-- charsetprober.py
+¦   ¦       ¦   ¦   ¦   +-- codingstatemachine.py
+¦   ¦       ¦   ¦   ¦   +-- codingstatemachinedict.py
+¦   ¦       ¦   ¦   ¦   +-- cp949prober.py
+¦   ¦       ¦   ¦   ¦   +-- enums.py
+¦   ¦       ¦   ¦   ¦   +-- escprober.py
+¦   ¦       ¦   ¦   ¦   +-- escsm.py
+¦   ¦       ¦   ¦   ¦   +-- eucjpprober.py
+¦   ¦       ¦   ¦   ¦   +-- euckrfreq.py
+¦   ¦       ¦   ¦   ¦   +-- euckrprober.py
+¦   ¦       ¦   ¦   ¦   +-- euctwfreq.py
+¦   ¦       ¦   ¦   ¦   +-- euctwprober.py
+¦   ¦       ¦   ¦   ¦   +-- gb2312freq.py
+¦   ¦       ¦   ¦   ¦   +-- gb2312prober.py
+¦   ¦       ¦   ¦   ¦   +-- hebrewprober.py
+¦   ¦       ¦   ¦   ¦   +-- jisfreq.py
+¦   ¦       ¦   ¦   ¦   +-- johabfreq.py
+¦   ¦       ¦   ¦   ¦   +-- johabprober.py
+¦   ¦       ¦   ¦   ¦   +-- jpcntx.py
+¦   ¦       ¦   ¦   ¦   +-- langbulgarianmodel.py
+¦   ¦       ¦   ¦   ¦   +-- langgreekmodel.py
+¦   ¦       ¦   ¦   ¦   +-- langhebrewmodel.py
+¦   ¦       ¦   ¦   ¦   +-- langhungarianmodel.py
+¦   ¦       ¦   ¦   ¦   +-- langrussianmodel.py
+¦   ¦       ¦   ¦   ¦   +-- langthaimodel.py
+¦   ¦       ¦   ¦   ¦   +-- langturkishmodel.py
+¦   ¦       ¦   ¦   ¦   +-- latin1prober.py
+¦   ¦       ¦   ¦   ¦   +-- macromanprober.py
+¦   ¦       ¦   ¦   ¦   +-- mbcharsetprober.py
+¦   ¦       ¦   ¦   ¦   +-- mbcsgroupprober.py
+¦   ¦       ¦   ¦   ¦   +-- mbcssm.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   ¦   +-- resultdict.py
+¦   ¦       ¦   ¦   ¦   +-- sbcharsetprober.py
+¦   ¦       ¦   ¦   ¦   +-- sbcsgroupprober.py
+¦   ¦       ¦   ¦   ¦   +-- sjisprober.py
+¦   ¦       ¦   ¦   ¦   +-- universaldetector.py
+¦   ¦       ¦   ¦   ¦   +-- utf1632prober.py
+¦   ¦       ¦   ¦   ¦   +-- utf8prober.py
+¦   ¦       ¦   ¦   ¦   +-- version.py
+¦   ¦       ¦   ¦   +-- colorama
+¦   ¦       ¦   ¦   ¦   +-- tests
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ansi_test.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ansitowin32_test.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- initialise_test.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- isatty_test.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- utils.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- winterm_test.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- ansi.py
+¦   ¦       ¦   ¦   ¦   +-- ansitowin32.py
+¦   ¦       ¦   ¦   ¦   +-- initialise.py
+¦   ¦       ¦   ¦   ¦   +-- win32.py
+¦   ¦       ¦   ¦   ¦   +-- winterm.py
+¦   ¦       ¦   ¦   +-- distlib
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- compat.py
+¦   ¦       ¦   ¦   ¦   +-- database.py
+¦   ¦       ¦   ¦   ¦   +-- index.py
+¦   ¦       ¦   ¦   ¦   +-- locators.py
+¦   ¦       ¦   ¦   ¦   +-- manifest.py
+¦   ¦       ¦   ¦   ¦   +-- markers.py
+¦   ¦       ¦   ¦   ¦   +-- metadata.py
+¦   ¦       ¦   ¦   ¦   +-- resources.py
+¦   ¦       ¦   ¦   ¦   +-- scripts.py
+¦   ¦       ¦   ¦   ¦   +-- t32.exe
+¦   ¦       ¦   ¦   ¦   +-- t64.exe
+¦   ¦       ¦   ¦   ¦   +-- t64-arm.exe
+¦   ¦       ¦   ¦   ¦   +-- util.py
+¦   ¦       ¦   ¦   ¦   +-- version.py
+¦   ¦       ¦   ¦   ¦   +-- w32.exe
+¦   ¦       ¦   ¦   ¦   +-- w64.exe
+¦   ¦       ¦   ¦   ¦   +-- w64-arm.exe
+¦   ¦       ¦   ¦   ¦   +-- wheel.py
+¦   ¦       ¦   ¦   +-- distro
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __main__.py
+¦   ¦       ¦   ¦   ¦   +-- distro.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   +-- idna
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- codec.py
+¦   ¦       ¦   ¦   ¦   +-- compat.py
+¦   ¦       ¦   ¦   ¦   +-- core.py
+¦   ¦       ¦   ¦   ¦   +-- idnadata.py
+¦   ¦       ¦   ¦   ¦   +-- intranges.py
+¦   ¦       ¦   ¦   ¦   +-- package_data.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   ¦   +-- uts46data.py
+¦   ¦       ¦   ¦   +-- msgpack
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- exceptions.py
+¦   ¦       ¦   ¦   ¦   +-- ext.py
+¦   ¦       ¦   ¦   ¦   +-- fallback.py
+¦   ¦       ¦   ¦   +-- packaging
+¦   ¦       ¦   ¦   ¦   +-- __about__.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _manylinux.py
+¦   ¦       ¦   ¦   ¦   +-- _musllinux.py
+¦   ¦       ¦   ¦   ¦   +-- _structures.py
+¦   ¦       ¦   ¦   ¦   +-- markers.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   ¦   +-- requirements.py
+¦   ¦       ¦   ¦   ¦   +-- specifiers.py
+¦   ¦       ¦   ¦   ¦   +-- tags.py
+¦   ¦       ¦   ¦   ¦   +-- utils.py
+¦   ¦       ¦   ¦   ¦   +-- version.py
+¦   ¦       ¦   ¦   +-- pkg_resources
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- platformdirs
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __main__.py
+¦   ¦       ¦   ¦   ¦   +-- android.py
+¦   ¦       ¦   ¦   ¦   +-- api.py
+¦   ¦       ¦   ¦   ¦   +-- macos.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   ¦   +-- unix.py
+¦   ¦       ¦   ¦   ¦   +-- version.py
+¦   ¦       ¦   ¦   ¦   +-- windows.py
+¦   ¦       ¦   ¦   +-- pygments
+¦   ¦       ¦   ¦   ¦   +-- filters
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- formatters
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- _mapping.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- bbcode.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- groff.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- html.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- img.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- irc.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- latex.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- other.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- pangomarkup.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- rtf.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- svg.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- terminal.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- terminal256.py
+¦   ¦       ¦   ¦   ¦   +-- lexers
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- _mapping.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- python.py
+¦   ¦       ¦   ¦   ¦   +-- styles
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __main__.py
+¦   ¦       ¦   ¦   ¦   +-- cmdline.py
+¦   ¦       ¦   ¦   ¦   +-- console.py
+¦   ¦       ¦   ¦   ¦   +-- filter.py
+¦   ¦       ¦   ¦   ¦   +-- formatter.py
+¦   ¦       ¦   ¦   ¦   +-- lexer.py
+¦   ¦       ¦   ¦   ¦   +-- modeline.py
+¦   ¦       ¦   ¦   ¦   +-- plugin.py
+¦   ¦       ¦   ¦   ¦   +-- regexopt.py
+¦   ¦       ¦   ¦   ¦   +-- scanner.py
+¦   ¦       ¦   ¦   ¦   +-- sphinxext.py
+¦   ¦       ¦   ¦   ¦   +-- style.py
+¦   ¦       ¦   ¦   ¦   +-- token.py
+¦   ¦       ¦   ¦   ¦   +-- unistring.py
+¦   ¦       ¦   ¦   ¦   +-- util.py
+¦   ¦       ¦   ¦   +-- pyparsing
+¦   ¦       ¦   ¦   ¦   +-- diagram
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- actions.py
+¦   ¦       ¦   ¦   ¦   +-- common.py
+¦   ¦       ¦   ¦   ¦   +-- core.py
+¦   ¦       ¦   ¦   ¦   +-- exceptions.py
+¦   ¦       ¦   ¦   ¦   +-- helpers.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   ¦   +-- results.py
+¦   ¦       ¦   ¦   ¦   +-- testing.py
+¦   ¦       ¦   ¦   ¦   +-- unicode.py
+¦   ¦       ¦   ¦   ¦   +-- util.py
+¦   ¦       ¦   ¦   +-- pyproject_hooks
+¦   ¦       ¦   ¦   ¦   +-- _in_process
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- _in_process.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _compat.py
+¦   ¦       ¦   ¦   ¦   +-- _impl.py
+¦   ¦       ¦   ¦   +-- requests
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __version__.py
+¦   ¦       ¦   ¦   ¦   +-- _internal_utils.py
+¦   ¦       ¦   ¦   ¦   +-- adapters.py
+¦   ¦       ¦   ¦   ¦   +-- api.py
+¦   ¦       ¦   ¦   ¦   +-- auth.py
+¦   ¦       ¦   ¦   ¦   +-- certs.py
+¦   ¦       ¦   ¦   ¦   +-- compat.py
+¦   ¦       ¦   ¦   ¦   +-- cookies.py
+¦   ¦       ¦   ¦   ¦   +-- exceptions.py
+¦   ¦       ¦   ¦   ¦   +-- help.py
+¦   ¦       ¦   ¦   ¦   +-- hooks.py
+¦   ¦       ¦   ¦   ¦   +-- models.py
+¦   ¦       ¦   ¦   ¦   +-- packages.py
+¦   ¦       ¦   ¦   ¦   +-- sessions.py
+¦   ¦       ¦   ¦   ¦   +-- status_codes.py
+¦   ¦       ¦   ¦   ¦   +-- structures.py
+¦   ¦       ¦   ¦   ¦   +-- utils.py
+¦   ¦       ¦   ¦   +-- resolvelib
+¦   ¦       ¦   ¦   ¦   +-- compat
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- collections_abc.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- providers.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   ¦   +-- reporters.py
+¦   ¦       ¦   ¦   ¦   +-- resolvers.py
+¦   ¦       ¦   ¦   ¦   +-- structs.py
+¦   ¦       ¦   ¦   +-- rich
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __main__.py
+¦   ¦       ¦   ¦   ¦   +-- _cell_widths.py
+¦   ¦       ¦   ¦   ¦   +-- _emoji_codes.py
+¦   ¦       ¦   ¦   ¦   +-- _emoji_replace.py
+¦   ¦       ¦   ¦   ¦   +-- _export_format.py
+¦   ¦       ¦   ¦   ¦   +-- _extension.py
+¦   ¦       ¦   ¦   ¦   +-- _fileno.py
+¦   ¦       ¦   ¦   ¦   +-- _inspect.py
+¦   ¦       ¦   ¦   ¦   +-- _log_render.py
+¦   ¦       ¦   ¦   ¦   +-- _loop.py
+¦   ¦       ¦   ¦   ¦   +-- _null_file.py
+¦   ¦       ¦   ¦   ¦   +-- _palettes.py
+¦   ¦       ¦   ¦   ¦   +-- _pick.py
+¦   ¦       ¦   ¦   ¦   +-- _ratio.py
+¦   ¦       ¦   ¦   ¦   +-- _spinners.py
+¦   ¦       ¦   ¦   ¦   +-- _stack.py
+¦   ¦       ¦   ¦   ¦   +-- _timer.py
+¦   ¦       ¦   ¦   ¦   +-- _win32_console.py
+¦   ¦       ¦   ¦   ¦   +-- _windows.py
+¦   ¦       ¦   ¦   ¦   +-- _windows_renderer.py
+¦   ¦       ¦   ¦   ¦   +-- _wrap.py
+¦   ¦       ¦   ¦   ¦   +-- abc.py
+¦   ¦       ¦   ¦   ¦   +-- align.py
+¦   ¦       ¦   ¦   ¦   +-- ansi.py
+¦   ¦       ¦   ¦   ¦   +-- bar.py
+¦   ¦       ¦   ¦   ¦   +-- box.py
+¦   ¦       ¦   ¦   ¦   +-- cells.py
+¦   ¦       ¦   ¦   ¦   +-- color.py
+¦   ¦       ¦   ¦   ¦   +-- color_triplet.py
+¦   ¦       ¦   ¦   ¦   +-- columns.py
+¦   ¦       ¦   ¦   ¦   +-- console.py
+¦   ¦       ¦   ¦   ¦   +-- constrain.py
+¦   ¦       ¦   ¦   ¦   +-- containers.py
+¦   ¦       ¦   ¦   ¦   +-- control.py
+¦   ¦       ¦   ¦   ¦   +-- default_styles.py
+¦   ¦       ¦   ¦   ¦   +-- diagnose.py
+¦   ¦       ¦   ¦   ¦   +-- emoji.py
+¦   ¦       ¦   ¦   ¦   +-- errors.py
+¦   ¦       ¦   ¦   ¦   +-- file_proxy.py
+¦   ¦       ¦   ¦   ¦   +-- filesize.py
+¦   ¦       ¦   ¦   ¦   +-- highlighter.py
+¦   ¦       ¦   ¦   ¦   +-- json.py
+¦   ¦       ¦   ¦   ¦   +-- jupyter.py
+¦   ¦       ¦   ¦   ¦   +-- layout.py
+¦   ¦       ¦   ¦   ¦   +-- live.py
+¦   ¦       ¦   ¦   ¦   +-- live_render.py
+¦   ¦       ¦   ¦   ¦   +-- logging.py
+¦   ¦       ¦   ¦   ¦   +-- markup.py
+¦   ¦       ¦   ¦   ¦   +-- measure.py
+¦   ¦       ¦   ¦   ¦   +-- padding.py
+¦   ¦       ¦   ¦   ¦   +-- pager.py
+¦   ¦       ¦   ¦   ¦   +-- palette.py
+¦   ¦       ¦   ¦   ¦   +-- panel.py
+¦   ¦       ¦   ¦   ¦   +-- pretty.py
+¦   ¦       ¦   ¦   ¦   +-- progress.py
+¦   ¦       ¦   ¦   ¦   +-- progress_bar.py
+¦   ¦       ¦   ¦   ¦   +-- prompt.py
+¦   ¦       ¦   ¦   ¦   +-- protocol.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   ¦   +-- region.py
+¦   ¦       ¦   ¦   ¦   +-- repr.py
+¦   ¦       ¦   ¦   ¦   +-- rule.py
+¦   ¦       ¦   ¦   ¦   +-- scope.py
+¦   ¦       ¦   ¦   ¦   +-- screen.py
+¦   ¦       ¦   ¦   ¦   +-- segment.py
+¦   ¦       ¦   ¦   ¦   +-- spinner.py
+¦   ¦       ¦   ¦   ¦   +-- status.py
+¦   ¦       ¦   ¦   ¦   +-- style.py
+¦   ¦       ¦   ¦   ¦   +-- styled.py
+¦   ¦       ¦   ¦   ¦   +-- syntax.py
+¦   ¦       ¦   ¦   ¦   +-- table.py
+¦   ¦       ¦   ¦   ¦   +-- terminal_theme.py
+¦   ¦       ¦   ¦   ¦   +-- text.py
+¦   ¦       ¦   ¦   ¦   +-- theme.py
+¦   ¦       ¦   ¦   ¦   +-- themes.py
+¦   ¦       ¦   ¦   ¦   +-- traceback.py
+¦   ¦       ¦   ¦   ¦   +-- tree.py
+¦   ¦       ¦   ¦   +-- tenacity
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _asyncio.py
+¦   ¦       ¦   ¦   ¦   +-- _utils.py
+¦   ¦       ¦   ¦   ¦   +-- after.py
+¦   ¦       ¦   ¦   ¦   +-- before.py
+¦   ¦       ¦   ¦   ¦   +-- before_sleep.py
+¦   ¦       ¦   ¦   ¦   +-- nap.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   ¦   +-- retry.py
+¦   ¦       ¦   ¦   ¦   +-- stop.py
+¦   ¦       ¦   ¦   ¦   +-- tornadoweb.py
+¦   ¦       ¦   ¦   ¦   +-- wait.py
+¦   ¦       ¦   ¦   +-- tomli
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _parser.py
+¦   ¦       ¦   ¦   ¦   +-- _re.py
+¦   ¦       ¦   ¦   ¦   +-- _types.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   +-- truststore
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _api.py
+¦   ¦       ¦   ¦   ¦   +-- _macos.py
+¦   ¦       ¦   ¦   ¦   +-- _openssl.py
+¦   ¦       ¦   ¦   ¦   +-- _ssl_constants.py
+¦   ¦       ¦   ¦   ¦   +-- _windows.py
+¦   ¦       ¦   ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   +-- urllib3
+¦   ¦       ¦   ¦   ¦   +-- contrib
+¦   ¦       ¦   ¦   ¦   ¦   +-- _securetransport
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- bindings.py
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- low_level.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- _appengine_environ.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- appengine.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ntlmpool.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- pyopenssl.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- securetransport.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- socks.py
+¦   ¦       ¦   ¦   ¦   +-- packages
+¦   ¦       ¦   ¦   ¦   ¦   +-- backports
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- makefile.py
+¦   ¦       ¦   ¦   ¦   ¦   ¦   +-- weakref_finalize.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- six.py
+¦   ¦       ¦   ¦   ¦   +-- util
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- connection.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- proxy.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- queue.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- request.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- response.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- retry.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ssl_.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ssl_match_hostname.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- ssltransport.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- timeout.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- url.py
+¦   ¦       ¦   ¦   ¦   ¦   +-- wait.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _collections.py
+¦   ¦       ¦   ¦   ¦   +-- _version.py
+¦   ¦       ¦   ¦   ¦   +-- connection.py
+¦   ¦       ¦   ¦   ¦   +-- connectionpool.py
+¦   ¦       ¦   ¦   ¦   +-- exceptions.py
+¦   ¦       ¦   ¦   ¦   +-- fields.py
+¦   ¦       ¦   ¦   ¦   +-- filepost.py
+¦   ¦       ¦   ¦   ¦   +-- poolmanager.py
+¦   ¦       ¦   ¦   ¦   +-- request.py
+¦   ¦       ¦   ¦   ¦   +-- response.py
+¦   ¦       ¦   ¦   +-- webencodings
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- labels.py
+¦   ¦       ¦   ¦   ¦   +-- mklabels.py
+¦   ¦       ¦   ¦   ¦   +-- tests.py
+¦   ¦       ¦   ¦   ¦   +-- x_user_defined.py
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- six.py
+¦   ¦       ¦   ¦   +-- typing_extensions.py
+¦   ¦       ¦   ¦   +-- vendor.txt
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __main__.py
+¦   ¦       ¦   +-- __pip-runner__.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- pip-24.0.dist-info
+¦   ¦       ¦   +-- AUTHORS.txt
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- LICENSE.txt
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- REQUESTED
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- pkg_resources
+¦   ¦       ¦   +-- _vendor
+¦   ¦       ¦   ¦   +-- importlib_resources
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _adapters.py
+¦   ¦       ¦   ¦   ¦   +-- _common.py
+¦   ¦       ¦   ¦   ¦   +-- _compat.py
+¦   ¦       ¦   ¦   ¦   +-- _itertools.py
+¦   ¦       ¦   ¦   ¦   +-- _legacy.py
+¦   ¦       ¦   ¦   ¦   +-- abc.py
+¦   ¦       ¦   ¦   ¦   +-- readers.py
+¦   ¦       ¦   ¦   ¦   +-- simple.py
+¦   ¦       ¦   ¦   +-- jaraco
+¦   ¦       ¦   ¦   ¦   +-- text
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- context.py
+¦   ¦       ¦   ¦   ¦   +-- functools.py
+¦   ¦       ¦   ¦   +-- more_itertools
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- more.py
+¦   ¦       ¦   ¦   ¦   +-- recipes.py
+¦   ¦       ¦   ¦   +-- packaging
+¦   ¦       ¦   ¦   ¦   +-- __about__.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- _manylinux.py
+¦   ¦       ¦   ¦   ¦   +-- _musllinux.py
+¦   ¦       ¦   ¦   ¦   +-- _structures.py
+¦   ¦       ¦   ¦   ¦   +-- markers.py
+¦   ¦       ¦   ¦   ¦   +-- requirements.py
+¦   ¦       ¦   ¦   ¦   +-- specifiers.py
+¦   ¦       ¦   ¦   ¦   +-- tags.py
+¦   ¦       ¦   ¦   ¦   +-- utils.py
+¦   ¦       ¦   ¦   ¦   +-- version.py
+¦   ¦       ¦   ¦   +-- pyparsing
+¦   ¦       ¦   ¦   ¦   +-- diagram
+¦   ¦       ¦   ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   ¦   +-- actions.py
+¦   ¦       ¦   ¦   ¦   +-- common.py
+¦   ¦       ¦   ¦   ¦   +-- core.py
+¦   ¦       ¦   ¦   ¦   +-- exceptions.py
+¦   ¦       ¦   ¦   ¦   +-- helpers.py
+¦   ¦       ¦   ¦   ¦   +-- results.py
+¦   ¦       ¦   ¦   ¦   +-- testing.py
+¦   ¦       ¦   ¦   ¦   +-- unicode.py
+¦   ¦       ¦   ¦   ¦   +-- util.py
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- appdirs.py
+¦   ¦       ¦   ¦   +-- zipp.py
+¦   ¦       ¦   +-- extern
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       +-- pluggy
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _callers.py
+¦   ¦       ¦   +-- _hooks.py
+¦   ¦       ¦   +-- _manager.py
+¦   ¦       ¦   +-- _result.py
+¦   ¦       ¦   +-- _tracing.py
+¦   ¦       ¦   +-- _version.py
+¦   ¦       ¦   +-- _warnings.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- pluggy-1.6.0.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- pydantic
+¦   ¦       ¦   +-- _internal
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _config.py
+¦   ¦       ¦   ¦   +-- _core_metadata.py
+¦   ¦       ¦   ¦   +-- _core_utils.py
+¦   ¦       ¦   ¦   +-- _dataclasses.py
+¦   ¦       ¦   ¦   +-- _decorators.py
+¦   ¦       ¦   ¦   +-- _decorators_v1.py
+¦   ¦       ¦   ¦   +-- _discriminated_union.py
+¦   ¦       ¦   ¦   +-- _docs_extraction.py
+¦   ¦       ¦   ¦   +-- _fields.py
+¦   ¦       ¦   ¦   +-- _forward_ref.py
+¦   ¦       ¦   ¦   +-- _generate_schema.py
+¦   ¦       ¦   ¦   +-- _generics.py
+¦   ¦       ¦   ¦   +-- _git.py
+¦   ¦       ¦   ¦   +-- _import_utils.py
+¦   ¦       ¦   ¦   +-- _internal_dataclass.py
+¦   ¦       ¦   ¦   +-- _known_annotated_metadata.py
+¦   ¦       ¦   ¦   +-- _mock_val_ser.py
+¦   ¦       ¦   ¦   +-- _model_construction.py
+¦   ¦       ¦   ¦   +-- _namespace_utils.py
+¦   ¦       ¦   ¦   +-- _repr.py
+¦   ¦       ¦   ¦   +-- _schema_gather.py
+¦   ¦       ¦   ¦   +-- _schema_generation_shared.py
+¦   ¦       ¦   ¦   +-- _serializers.py
+¦   ¦       ¦   ¦   +-- _signature.py
+¦   ¦       ¦   ¦   +-- _typing_extra.py
+¦   ¦       ¦   ¦   +-- _utils.py
+¦   ¦       ¦   ¦   +-- _validate_call.py
+¦   ¦       ¦   ¦   +-- _validators.py
+¦   ¦       ¦   +-- deprecated
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- class_validators.py
+¦   ¦       ¦   ¦   +-- config.py
+¦   ¦       ¦   ¦   +-- copy_internals.py
+¦   ¦       ¦   ¦   +-- decorator.py
+¦   ¦       ¦   ¦   +-- json.py
+¦   ¦       ¦   ¦   +-- parse.py
+¦   ¦       ¦   ¦   +-- tools.py
+¦   ¦       ¦   +-- experimental
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- arguments_schema.py
+¦   ¦       ¦   ¦   +-- missing_sentinel.py
+¦   ¦       ¦   ¦   +-- pipeline.py
+¦   ¦       ¦   +-- plugin
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _loader.py
+¦   ¦       ¦   ¦   +-- _schema_validator.py
+¦   ¦       ¦   +-- v1
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _hypothesis_plugin.py
+¦   ¦       ¦   ¦   +-- annotated_types.py
+¦   ¦       ¦   ¦   +-- class_validators.py
+¦   ¦       ¦   ¦   +-- color.py
+¦   ¦       ¦   ¦   +-- config.py
+¦   ¦       ¦   ¦   +-- dataclasses.py
+¦   ¦       ¦   ¦   +-- datetime_parse.py
+¦   ¦       ¦   ¦   +-- decorator.py
+¦   ¦       ¦   ¦   +-- env_settings.py
+¦   ¦       ¦   ¦   +-- error_wrappers.py
+¦   ¦       ¦   ¦   +-- errors.py
+¦   ¦       ¦   ¦   +-- fields.py
+¦   ¦       ¦   ¦   +-- generics.py
+¦   ¦       ¦   ¦   +-- json.py
+¦   ¦       ¦   ¦   +-- main.py
+¦   ¦       ¦   ¦   +-- mypy.py
+¦   ¦       ¦   ¦   +-- networks.py
+¦   ¦       ¦   ¦   +-- parse.py
+¦   ¦       ¦   ¦   +-- py.typed
+¦   ¦       ¦   ¦   +-- schema.py
+¦   ¦       ¦   ¦   +-- tools.py
+¦   ¦       ¦   ¦   +-- types.py
+¦   ¦       ¦   ¦   +-- typing.py
+¦   ¦       ¦   ¦   +-- utils.py
+¦   ¦       ¦   ¦   +-- validators.py
+¦   ¦       ¦   ¦   +-- version.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _migration.py
+¦   ¦       ¦   +-- alias_generators.py
+¦   ¦       ¦   +-- aliases.py
+¦   ¦       ¦   +-- annotated_handlers.py
+¦   ¦       ¦   +-- class_validators.py
+¦   ¦       ¦   +-- color.py
+¦   ¦       ¦   +-- config.py
+¦   ¦       ¦   +-- dataclasses.py
+¦   ¦       ¦   +-- datetime_parse.py
+¦   ¦       ¦   +-- decorator.py
+¦   ¦       ¦   +-- env_settings.py
+¦   ¦       ¦   +-- error_wrappers.py
+¦   ¦       ¦   +-- errors.py
+¦   ¦       ¦   +-- fields.py
+¦   ¦       ¦   +-- functional_serializers.py
+¦   ¦       ¦   +-- functional_validators.py
+¦   ¦       ¦   +-- generics.py
+¦   ¦       ¦   +-- json.py
+¦   ¦       ¦   +-- json_schema.py
+¦   ¦       ¦   +-- main.py
+¦   ¦       ¦   +-- mypy.py
+¦   ¦       ¦   +-- networks.py
+¦   ¦       ¦   +-- parse.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- root_model.py
+¦   ¦       ¦   +-- schema.py
+¦   ¦       ¦   +-- tools.py
+¦   ¦       ¦   +-- type_adapter.py
+¦   ¦       ¦   +-- types.py
+¦   ¦       ¦   +-- typing.py
+¦   ¦       ¦   +-- utils.py
+¦   ¦       ¦   +-- validate_call_decorator.py
+¦   ¦       ¦   +-- validators.py
+¦   ¦       ¦   +-- version.py
+¦   ¦       ¦   +-- warnings.py
+¦   ¦       +-- pydantic_core
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _pydantic_core.cp311-win_amd64.pyd
+¦   ¦       ¦   +-- _pydantic_core.pyi
+¦   ¦       ¦   +-- core_schema.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- pydantic_core-2.41.5.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- pydantic-2.12.5.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- pygments
+¦   ¦       ¦   +-- filters
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   +-- formatters
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _mapping.py
+¦   ¦       ¦   ¦   +-- bbcode.py
+¦   ¦       ¦   ¦   +-- groff.py
+¦   ¦       ¦   ¦   +-- html.py
+¦   ¦       ¦   ¦   +-- img.py
+¦   ¦       ¦   ¦   +-- irc.py
+¦   ¦       ¦   ¦   +-- latex.py
+¦   ¦       ¦   ¦   +-- other.py
+¦   ¦       ¦   ¦   +-- pangomarkup.py
+¦   ¦       ¦   ¦   +-- rtf.py
+¦   ¦       ¦   ¦   +-- svg.py
+¦   ¦       ¦   ¦   +-- terminal.py
+¦   ¦       ¦   ¦   +-- terminal256.py
+¦   ¦       ¦   +-- lexers
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _ada_builtins.py
+¦   ¦       ¦   ¦   +-- _asy_builtins.py
+¦   ¦       ¦   ¦   +-- _cl_builtins.py
+¦   ¦       ¦   ¦   +-- _cocoa_builtins.py
+¦   ¦       ¦   ¦   +-- _csound_builtins.py
+¦   ¦       ¦   ¦   +-- _css_builtins.py
+¦   ¦       ¦   ¦   +-- _googlesql_builtins.py
+¦   ¦       ¦   ¦   +-- _julia_builtins.py
+¦   ¦       ¦   ¦   +-- _lasso_builtins.py
+¦   ¦       ¦   ¦   +-- _lilypond_builtins.py
+¦   ¦       ¦   ¦   +-- _lua_builtins.py
+¦   ¦       ¦   ¦   +-- _luau_builtins.py
+¦   ¦       ¦   ¦   +-- _mapping.py
+¦   ¦       ¦   ¦   +-- _mql_builtins.py
+¦   ¦       ¦   ¦   +-- _mysql_builtins.py
+¦   ¦       ¦   ¦   +-- _openedge_builtins.py
+¦   ¦       ¦   ¦   +-- _php_builtins.py
+¦   ¦       ¦   ¦   +-- _postgres_builtins.py
+¦   ¦       ¦   ¦   +-- _qlik_builtins.py
+¦   ¦       ¦   ¦   +-- _scheme_builtins.py
+¦   ¦       ¦   ¦   +-- _scilab_builtins.py
+¦   ¦       ¦   ¦   +-- _sourcemod_builtins.py
+¦   ¦       ¦   ¦   +-- _sql_builtins.py
+¦   ¦       ¦   ¦   +-- _stan_builtins.py
+¦   ¦       ¦   ¦   +-- _stata_builtins.py
+¦   ¦       ¦   ¦   +-- _tsql_builtins.py
+¦   ¦       ¦   ¦   +-- _usd_builtins.py
+¦   ¦       ¦   ¦   +-- _vbscript_builtins.py
+¦   ¦       ¦   ¦   +-- _vim_builtins.py
+¦   ¦       ¦   ¦   +-- actionscript.py
+¦   ¦       ¦   ¦   +-- ada.py
+¦   ¦       ¦   ¦   +-- agile.py
+¦   ¦       ¦   ¦   +-- algebra.py
+¦   ¦       ¦   ¦   +-- ambient.py
+¦   ¦       ¦   ¦   +-- amdgpu.py
+¦   ¦       ¦   ¦   +-- ampl.py
+¦   ¦       ¦   ¦   +-- apdlexer.py
+¦   ¦       ¦   ¦   +-- apl.py
+¦   ¦       ¦   ¦   +-- archetype.py
+¦   ¦       ¦   ¦   +-- arrow.py
+¦   ¦       ¦   ¦   +-- arturo.py
+¦   ¦       ¦   ¦   +-- asc.py
+¦   ¦       ¦   ¦   +-- asm.py
+¦   ¦       ¦   ¦   +-- asn1.py
+¦   ¦       ¦   ¦   +-- automation.py
+¦   ¦       ¦   ¦   +-- bare.py
+¦   ¦       ¦   ¦   +-- basic.py
+¦   ¦       ¦   ¦   +-- bdd.py
+¦   ¦       ¦   ¦   +-- berry.py
+¦   ¦       ¦   ¦   +-- bibtex.py
+¦   ¦       ¦   ¦   +-- blueprint.py
+¦   ¦       ¦   ¦   +-- boa.py
+¦   ¦       ¦   ¦   +-- bqn.py
+¦   ¦       ¦   ¦   +-- business.py
+¦   ¦       ¦   ¦   +-- c_cpp.py
+¦   ¦       ¦   ¦   +-- c_like.py
+¦   ¦       ¦   ¦   +-- capnproto.py
+¦   ¦       ¦   ¦   +-- carbon.py
+¦   ¦       ¦   ¦   +-- cddl.py
+¦   ¦       ¦   ¦   +-- chapel.py
+¦   ¦       ¦   ¦   +-- clean.py
+¦   ¦       ¦   ¦   +-- codeql.py
+¦   ¦       ¦   ¦   +-- comal.py
+¦   ¦       ¦   ¦   +-- compiled.py
+¦   ¦       ¦   ¦   +-- configs.py
+¦   ¦       ¦   ¦   +-- console.py
+¦   ¦       ¦   ¦   +-- cplint.py
+¦   ¦       ¦   ¦   +-- crystal.py
+¦   ¦       ¦   ¦   +-- csound.py
+¦   ¦       ¦   ¦   +-- css.py
+¦   ¦       ¦   ¦   +-- d.py
+¦   ¦       ¦   ¦   +-- dalvik.py
+¦   ¦       ¦   ¦   +-- data.py
+¦   ¦       ¦   ¦   +-- dax.py
+¦   ¦       ¦   ¦   +-- devicetree.py
+¦   ¦       ¦   ¦   +-- diff.py
+¦   ¦       ¦   ¦   +-- dns.py
+¦   ¦       ¦   ¦   +-- dotnet.py
+¦   ¦       ¦   ¦   +-- dsls.py
+¦   ¦       ¦   ¦   +-- dylan.py
+¦   ¦       ¦   ¦   +-- ecl.py
+¦   ¦       ¦   ¦   +-- eiffel.py
+¦   ¦       ¦   ¦   +-- elm.py
+¦   ¦       ¦   ¦   +-- elpi.py
+¦   ¦       ¦   ¦   +-- email.py
+¦   ¦       ¦   ¦   +-- erlang.py
+¦   ¦       ¦   ¦   +-- esoteric.py
+¦   ¦       ¦   ¦   +-- ezhil.py
+¦   ¦       ¦   ¦   +-- factor.py
+¦   ¦       ¦   ¦   +-- fantom.py
+¦   ¦       ¦   ¦   +-- felix.py
+¦   ¦       ¦   ¦   +-- fift.py
+¦   ¦       ¦   ¦   +-- floscript.py
+¦   ¦       ¦   ¦   +-- forth.py
+¦   ¦       ¦   ¦   +-- fortran.py
+¦   ¦       ¦   ¦   +-- foxpro.py
+¦   ¦       ¦   ¦   +-- freefem.py
+¦   ¦       ¦   ¦   +-- func.py
+¦   ¦       ¦   ¦   +-- functional.py
+¦   ¦       ¦   ¦   +-- futhark.py
+¦   ¦       ¦   ¦   +-- gcodelexer.py
+¦   ¦       ¦   ¦   +-- gdscript.py
+¦   ¦       ¦   ¦   +-- gleam.py
+¦   ¦       ¦   ¦   +-- go.py
+¦   ¦       ¦   ¦   +-- grammar_notation.py
+¦   ¦       ¦   ¦   +-- graph.py
+¦   ¦       ¦   ¦   +-- graphics.py
+¦   ¦       ¦   ¦   +-- graphql.py
+¦   ¦       ¦   ¦   +-- graphviz.py
+¦   ¦       ¦   ¦   +-- gsql.py
+¦   ¦       ¦   ¦   +-- hare.py
+¦   ¦       ¦   ¦   +-- haskell.py
+¦   ¦       ¦   ¦   +-- haxe.py
+¦   ¦       ¦   ¦   +-- hdl.py
+¦   ¦       ¦   ¦   +-- hexdump.py
+¦   ¦       ¦   ¦   +-- html.py
+¦   ¦       ¦   ¦   +-- idl.py
+¦   ¦       ¦   ¦   +-- igor.py
+¦   ¦       ¦   ¦   +-- inferno.py
+¦   ¦       ¦   ¦   +-- installers.py
+¦   ¦       ¦   ¦   +-- int_fiction.py
+¦   ¦       ¦   ¦   +-- iolang.py
+¦   ¦       ¦   ¦   +-- j.py
+¦   ¦       ¦   ¦   +-- javascript.py
+¦   ¦       ¦   ¦   +-- jmespath.py
+¦   ¦       ¦   ¦   +-- jslt.py
+¦   ¦       ¦   ¦   +-- json5.py
+¦   ¦       ¦   ¦   +-- jsonnet.py
+¦   ¦       ¦   ¦   +-- jsx.py
+¦   ¦       ¦   ¦   +-- julia.py
+¦   ¦       ¦   ¦   +-- jvm.py
+¦   ¦       ¦   ¦   +-- kuin.py
+¦   ¦       ¦   ¦   +-- kusto.py
+¦   ¦       ¦   ¦   +-- ldap.py
+¦   ¦       ¦   ¦   +-- lean.py
+¦   ¦       ¦   ¦   +-- lilypond.py
+¦   ¦       ¦   ¦   +-- lisp.py
+¦   ¦       ¦   ¦   +-- macaulay2.py
+¦   ¦       ¦   ¦   +-- make.py
+¦   ¦       ¦   ¦   +-- maple.py
+¦   ¦       ¦   ¦   +-- markup.py
+¦   ¦       ¦   ¦   +-- math.py
+¦   ¦       ¦   ¦   +-- matlab.py
+¦   ¦       ¦   ¦   +-- maxima.py
+¦   ¦       ¦   ¦   +-- meson.py
+¦   ¦       ¦   ¦   +-- mime.py
+¦   ¦       ¦   ¦   +-- minecraft.py
+¦   ¦       ¦   ¦   +-- mips.py
+¦   ¦       ¦   ¦   +-- ml.py
+¦   ¦       ¦   ¦   +-- modeling.py
+¦   ¦       ¦   ¦   +-- modula2.py
+¦   ¦       ¦   ¦   +-- mojo.py
+¦   ¦       ¦   ¦   +-- monte.py
+¦   ¦       ¦   ¦   +-- mosel.py
+¦   ¦       ¦   ¦   +-- ncl.py
+¦   ¦       ¦   ¦   +-- nimrod.py
+¦   ¦       ¦   ¦   +-- nit.py
+¦   ¦       ¦   ¦   +-- nix.py
+¦   ¦       ¦   ¦   +-- numbair.py
+¦   ¦       ¦   ¦   +-- oberon.py
+¦   ¦       ¦   ¦   +-- objective.py
+¦   ¦       ¦   ¦   +-- ooc.py
+¦   ¦       ¦   ¦   +-- openscad.py
+¦   ¦       ¦   ¦   +-- other.py
+¦   ¦       ¦   ¦   +-- parasail.py
+¦   ¦       ¦   ¦   +-- parsers.py
+¦   ¦       ¦   ¦   +-- pascal.py
+¦   ¦       ¦   ¦   +-- pawn.py
+¦   ¦       ¦   ¦   +-- pddl.py
+¦   ¦       ¦   ¦   +-- perl.py
+¦   ¦       ¦   ¦   +-- phix.py
+¦   ¦       ¦   ¦   +-- php.py
+¦   ¦       ¦   ¦   +-- pointless.py
+¦   ¦       ¦   ¦   +-- pony.py
+¦   ¦       ¦   ¦   +-- praat.py
+¦   ¦       ¦   ¦   +-- procfile.py
+¦   ¦       ¦   ¦   +-- prolog.py
+¦   ¦       ¦   ¦   +-- promql.py
+¦   ¦       ¦   ¦   +-- prql.py
+¦   ¦       ¦   ¦   +-- ptx.py
+¦   ¦       ¦   ¦   +-- python.py
+¦   ¦       ¦   ¦   +-- q.py
+¦   ¦       ¦   ¦   +-- qlik.py
+¦   ¦       ¦   ¦   +-- qvt.py
+¦   ¦       ¦   ¦   +-- r.py
+¦   ¦       ¦   ¦   +-- rdf.py
+¦   ¦       ¦   ¦   +-- rebol.py
+¦   ¦       ¦   ¦   +-- rego.py
+¦   ¦       ¦   ¦   +-- resource.py
+¦   ¦       ¦   ¦   +-- ride.py
+¦   ¦       ¦   ¦   +-- rita.py
+¦   ¦       ¦   ¦   +-- rnc.py
+¦   ¦       ¦   ¦   +-- roboconf.py
+¦   ¦       ¦   ¦   +-- robotframework.py
+¦   ¦       ¦   ¦   +-- ruby.py
+¦   ¦       ¦   ¦   +-- rust.py
+¦   ¦       ¦   ¦   +-- sas.py
+¦   ¦       ¦   ¦   +-- savi.py
+¦   ¦       ¦   ¦   +-- scdoc.py
+¦   ¦       ¦   ¦   +-- scripting.py
+¦   ¦       ¦   ¦   +-- sgf.py
+¦   ¦       ¦   ¦   +-- shell.py
+¦   ¦       ¦   ¦   +-- sieve.py
+¦   ¦       ¦   ¦   +-- slash.py
+¦   ¦       ¦   ¦   +-- smalltalk.py
+¦   ¦       ¦   ¦   +-- smithy.py
+¦   ¦       ¦   ¦   +-- smv.py
+¦   ¦       ¦   ¦   +-- snobol.py
+¦   ¦       ¦   ¦   +-- solidity.py
+¦   ¦       ¦   ¦   +-- soong.py
+¦   ¦       ¦   ¦   +-- sophia.py
+¦   ¦       ¦   ¦   +-- special.py
+¦   ¦       ¦   ¦   +-- spice.py
+¦   ¦       ¦   ¦   +-- sql.py
+¦   ¦       ¦   ¦   +-- srcinfo.py
+¦   ¦       ¦   ¦   +-- stata.py
+¦   ¦       ¦   ¦   +-- supercollider.py
+¦   ¦       ¦   ¦   +-- tablegen.py
+¦   ¦       ¦   ¦   +-- tact.py
+¦   ¦       ¦   ¦   +-- tal.py
+¦   ¦       ¦   ¦   +-- tcl.py
+¦   ¦       ¦   ¦   +-- teal.py
+¦   ¦       ¦   ¦   +-- templates.py
+¦   ¦       ¦   ¦   +-- teraterm.py
+¦   ¦       ¦   ¦   +-- testing.py
+¦   ¦       ¦   ¦   +-- text.py
+¦   ¦       ¦   ¦   +-- textedit.py
+¦   ¦       ¦   ¦   +-- textfmts.py
+¦   ¦       ¦   ¦   +-- theorem.py
+¦   ¦       ¦   ¦   +-- thingsdb.py
+¦   ¦       ¦   ¦   +-- tlb.py
+¦   ¦       ¦   ¦   +-- tls.py
+¦   ¦       ¦   ¦   +-- tnt.py
+¦   ¦       ¦   ¦   +-- trafficscript.py
+¦   ¦       ¦   ¦   +-- typoscript.py
+¦   ¦       ¦   ¦   +-- typst.py
+¦   ¦       ¦   ¦   +-- ul4.py
+¦   ¦       ¦   ¦   +-- unicon.py
+¦   ¦       ¦   ¦   +-- urbi.py
+¦   ¦       ¦   ¦   +-- usd.py
+¦   ¦       ¦   ¦   +-- varnish.py
+¦   ¦       ¦   ¦   +-- verification.py
+¦   ¦       ¦   ¦   +-- verifpal.py
+¦   ¦       ¦   ¦   +-- vip.py
+¦   ¦       ¦   ¦   +-- vyper.py
+¦   ¦       ¦   ¦   +-- web.py
+¦   ¦       ¦   ¦   +-- webassembly.py
+¦   ¦       ¦   ¦   +-- webidl.py
+¦   ¦       ¦   ¦   +-- webmisc.py
+¦   ¦       ¦   ¦   +-- wgsl.py
+¦   ¦       ¦   ¦   +-- whiley.py
+¦   ¦       ¦   ¦   +-- wowtoc.py
+¦   ¦       ¦   ¦   +-- wren.py
+¦   ¦       ¦   ¦   +-- x10.py
+¦   ¦       ¦   ¦   +-- xorg.py
+¦   ¦       ¦   ¦   +-- yang.py
+¦   ¦       ¦   ¦   +-- yara.py
+¦   ¦       ¦   ¦   +-- zig.py
+¦   ¦       ¦   +-- styles
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _mapping.py
+¦   ¦       ¦   ¦   +-- abap.py
+¦   ¦       ¦   ¦   +-- algol.py
+¦   ¦       ¦   ¦   +-- algol_nu.py
+¦   ¦       ¦   ¦   +-- arduino.py
+¦   ¦       ¦   ¦   +-- autumn.py
+¦   ¦       ¦   ¦   +-- borland.py
+¦   ¦       ¦   ¦   +-- bw.py
+¦   ¦       ¦   ¦   +-- coffee.py
+¦   ¦       ¦   ¦   +-- colorful.py
+¦   ¦       ¦   ¦   +-- default.py
+¦   ¦       ¦   ¦   +-- dracula.py
+¦   ¦       ¦   ¦   +-- emacs.py
+¦   ¦       ¦   ¦   +-- friendly.py
+¦   ¦       ¦   ¦   +-- friendly_grayscale.py
+¦   ¦       ¦   ¦   +-- fruity.py
+¦   ¦       ¦   ¦   +-- gh_dark.py
+¦   ¦       ¦   ¦   +-- gruvbox.py
+¦   ¦       ¦   ¦   +-- igor.py
+¦   ¦       ¦   ¦   +-- inkpot.py
+¦   ¦       ¦   ¦   +-- lightbulb.py
+¦   ¦       ¦   ¦   +-- lilypond.py
+¦   ¦       ¦   ¦   +-- lovelace.py
+¦   ¦       ¦   ¦   +-- manni.py
+¦   ¦       ¦   ¦   +-- material.py
+¦   ¦       ¦   ¦   +-- monokai.py
+¦   ¦       ¦   ¦   +-- murphy.py
+¦   ¦       ¦   ¦   +-- native.py
+¦   ¦       ¦   ¦   +-- nord.py
+¦   ¦       ¦   ¦   +-- onedark.py
+¦   ¦       ¦   ¦   +-- paraiso_dark.py
+¦   ¦       ¦   ¦   +-- paraiso_light.py
+¦   ¦       ¦   ¦   +-- pastie.py
+¦   ¦       ¦   ¦   +-- perldoc.py
+¦   ¦       ¦   ¦   +-- rainbow_dash.py
+¦   ¦       ¦   ¦   +-- rrt.py
+¦   ¦       ¦   ¦   +-- sas.py
+¦   ¦       ¦   ¦   +-- solarized.py
+¦   ¦       ¦   ¦   +-- staroffice.py
+¦   ¦       ¦   ¦   +-- stata_dark.py
+¦   ¦       ¦   ¦   +-- stata_light.py
+¦   ¦       ¦   ¦   +-- tango.py
+¦   ¦       ¦   ¦   +-- trac.py
+¦   ¦       ¦   ¦   +-- vim.py
+¦   ¦       ¦   ¦   +-- vs.py
+¦   ¦       ¦   ¦   +-- xcode.py
+¦   ¦       ¦   ¦   +-- zenburn.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __main__.py
+¦   ¦       ¦   +-- cmdline.py
+¦   ¦       ¦   +-- console.py
+¦   ¦       ¦   +-- filter.py
+¦   ¦       ¦   +-- formatter.py
+¦   ¦       ¦   +-- lexer.py
+¦   ¦       ¦   +-- modeline.py
+¦   ¦       ¦   +-- plugin.py
+¦   ¦       ¦   +-- regexopt.py
+¦   ¦       ¦   +-- scanner.py
+¦   ¦       ¦   +-- sphinxext.py
+¦   ¦       ¦   +-- style.py
+¦   ¦       ¦   +-- token.py
+¦   ¦       ¦   +-- unistring.py
+¦   ¦       ¦   +-- util.py
+¦   ¦       +-- pygments-2.19.2.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- AUTHORS
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- pyproject_hooks
+¦   ¦       ¦   +-- _in_process
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _in_process.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _impl.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- pyproject_hooks-1.2.0.dist-info
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- LICENSE
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- pytest
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __main__.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       +-- pytest-9.0.2.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- entry_points.txt
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- REQUESTED
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- pywin32_ctypes-0.2.3.dist-info
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- LICENSE.txt
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- pyyaml-6.0.3.dist-info
+¦   ¦       ¦   +-- licenses
+¦   ¦       ¦   ¦   +-- LICENSE
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- readme_renderer
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __main__.py
+¦   ¦       ¦   +-- clean.py
+¦   ¦       ¦   +-- markdown.py
+¦   ¦       ¦   +-- py.typed
+¦   ¦       ¦   +-- rst.py
+¦   ¦       ¦   +-- txt.py
+¦   ¦       +-- readme_renderer-44.0.dist-info
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- LICENSE
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt
+¦   ¦       ¦   +-- WHEEL
+¦   ¦       +-- requests
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- __version__.py
+¦   ¦       ¦   +-- _internal_utils.py
+¦   ¦       ¦   +-- adapters.py
+¦   ¦       ¦   +-- api.py
+¦   ¦       ¦   +-- auth.py
+¦   ¦       ¦   +-- certs.py
+¦   ¦       ¦   +-- compat.py
+¦   ¦       ¦   +-- cookies.py
+¦   ¦       ¦   +-- exceptions.py
+¦   ¦       ¦   +-- help.py
+¦   ¦       ¦   +-- hooks.py
+¦   ¦       ¦   +-- models.py
+¦   ¦       ¦   +-- packages.py
+¦   ¦       ¦   +-- sessions.py
+¦   ¦       ¦   +-- status_codes.py
+¦   ¦       ¦   +-- structures.py
+¦   ¦       ¦   +-- utils.py
+¦   ¦       +-- requests_toolbelt
+¦   ¦       ¦   +-- adapters
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- appengine.py
+¦   ¦       ¦   ¦   +-- fingerprint.py
+¦   ¦       ¦   ¦   +-- host_header_ssl.py
+¦   ¦       ¦   ¦   +-- socket_options.py
+¦   ¦       ¦   ¦   +-- source.py
+¦   ¦       ¦   ¦   +-- ssl.py
+¦   ¦       ¦   ¦   +-- x509.py
+¦   ¦       ¦   +-- auth
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- _digest_auth_compat.py
+¦   ¦       ¦   ¦   +-- guess.py
+¦   ¦       ¦   ¦   +-- handler.py
+¦   ¦       ¦   ¦   +-- http_proxy_digest.py
+¦   ¦       ¦   +-- cookies
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- forgetful.py
+¦   ¦       ¦   +-- downloadutils
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- stream.py
+¦   ¦       ¦   ¦   +-- tee.py
+¦   ¦       ¦   +-- multipart
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- decoder.py
+¦   ¦       ¦   ¦   +-- encoder.py
+¦   ¦       ¦   +-- threaded
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- pool.py
+¦   ¦       ¦   ¦   +-- thread.py
+¦   ¦       ¦   +-- utils
+¦   ¦       ¦   ¦   +-- __init__.py
+¦   ¦       ¦   ¦   +-- deprecated.py
+¦   ¦       ¦   ¦   +-- dump.py
+¦   ¦       ¦   ¦   +-- formdata.py
+¦   ¦       ¦   ¦   +-- user_agent.py
+¦   ¦       ¦   +-- __init__.py
+¦   ¦       ¦   +-- _compat.py
+¦   ¦       ¦   +-- exceptions.py
+¦   ¦       ¦   +-- sessions.py
+¦   ¦       ¦   +-- streaming_iterator.py
+¦   ¦       +-- requests_toolbelt-1.0.0.dist-info
+¦   ¦       ¦   +-- AUTHORS.rst
+¦   ¦       ¦   +-- INSTALLER
+¦   ¦       ¦   +-- LICENSE
+¦   ¦       ¦   +-- METADATA
+¦   ¦       ¦   +-- RECORD
+¦   ¦       ¦   +-- top_level.txt

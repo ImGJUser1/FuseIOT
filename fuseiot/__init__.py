@@ -1,4 +1,5 @@
-﻿from fuseiot.__version__ import __version__, __version_info__
+﻿
+from fuseiot.__version__ import __version__, __version_info__
 
 # Core classes
 from fuseiot.hub import Hub, HubConfig
@@ -60,8 +61,19 @@ from fuseiot.protocols.http import HTTP, HTTPConfig
 from fuseiot.protocols.https import HTTPS, HTTPSConfig
 from fuseiot.protocols.mqtt import MQTT, MQTTConfig
 from fuseiot.protocols.mqtts import MQTTS, MQTTSConfig
-from fuseiot.protocols.websocket import WebSocket, WebSocketConfig
-from fuseiot.protocols.serial import Serial, SerialConfig
+
+# Optional protocols - may raise ImportError if dependencies not installed
+try:
+    from fuseiot.protocols.web_socket import WebSocket, WebSocketConfig
+except ImportError:
+    WebSocket = None  # type: ignore
+    WebSocketConfig = None  # type: ignore
+
+try:
+    from fuseiot.protocols.serial import Serial, SerialConfig
+except ImportError:
+    Serial = None  # type: ignore
+    SerialConfig = None  # type: ignore
 
 # Capabilities
 from fuseiot.capabilities.base import Capability, CapabilityConfig, AsyncCapability
@@ -82,24 +94,51 @@ from fuseiot.utils.circuit_breaker import CircuitBreaker, CircuitState
 from fuseiot.utils.rate_limiter import RateLimiter, TokenBucket
 from fuseiot.utils.validation import DeviceModel, CommandModel, StateModel
 
-# Cloud connectors
-from fuseiot.cloud.base import CloudConnector
-from fuseiot.cloud.aws_iot import AWSIoT
-from fuseiot.cloud.azure_iot import AzureIoT
-from fuseiot.cloud.gcp_iot import GCPIoT
+# Cloud connectors - optional
+try:
+    from fuseiot.cloud.base import CloudConnector
+    from fuseiot.cloud.aws_iot import AWSIoT
+    from fuseiot.cloud.azure_iot import AzureIoT
+    from fuseiot.cloud.gcp_iot import GCPIoT
+except ImportError:
+    CloudConnector = None  # type: ignore
+    AWSIoT = None  # type: ignore
+    AzureIoT = None  # type: ignore
+    GCPIoT = None  # type: ignore
 
 # Edge computing
-from fuseiot.edge.rules import RuleEngine, Rule, Condition, Action, Trigger
+try:
+    from fuseiot.edge.rules import RuleEngine, Rule, Condition, Action, Trigger
+except ImportError:
+    RuleEngine = None  # type: ignore
+    Rule = None  # type: ignore
+    Condition = None  # type: ignore
+    Action = None  # type: ignore
+    Trigger = None  # type: ignore
 
 # Discovery
-from fuseiot.discovery.mdns import MDNSDiscovery, DiscoveryResult
+try:
+    from fuseiot.discovery.mdns import MDNSDiscovery, DiscoveryResult
+except ImportError:
+    MDNSDiscovery = None  # type: ignore
+    DiscoveryResult = None  # type: ignore
 
 # Monitoring
-from fuseiot.monitoring.metrics import MetricsCollector, PrometheusMetrics
-from fuseiot.monitoring.health import HealthServer, HealthStatus as ServerHealth
+try:
+    from fuseiot.monitoring.metrics import MetricsCollector, PrometheusMetrics
+    from fuseiot.monitoring.health import HealthServer, HealthStatus as ServerHealth
+except ImportError:
+    MetricsCollector = None  # type: ignore
+    PrometheusMetrics = None  # type: ignore
+    HealthServer = None  # type: ignore
+    ServerHealth = None  # type: ignore
 
 # Simulation
-from fuseiot.simulation.virtual_device import VirtualDevice, VirtualDeviceConfig
+try:
+    from fuseiot.simulation.virtual_device import VirtualDevice, VirtualDeviceConfig
+except ImportError:
+    VirtualDevice = None  # type: ignore
+    VirtualDeviceConfig = None  # type: ignore
 
 __all__ = [
     # Version

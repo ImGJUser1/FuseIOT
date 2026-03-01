@@ -1,6 +1,12 @@
+# fuseiot/capabilities/motor.py
+"""Position and speed control capability."""
+
 from typing import Dict, Any, Optional
 from .base import Capability, CapabilityConfig
 from ..result import CommandResult
+from ..logging_config import get_logger
+
+logger = get_logger("capabilities.motor")
 
 
 class Motor(Capability):
@@ -17,9 +23,11 @@ class Motor(Capability):
         cache,
         config=None,
         position_range: tuple = (0, 360),
-        speed_range: tuple = (0, 100)
+        speed_range: tuple = (0, 100),
+        event_bus=None,  # ADD THIS PARAMETER
+        **kwargs
     ):
-        super().__init__(protocol, cache, config)
+        super().__init__(protocol, cache, config, event_bus=event_bus, **kwargs)
         self.position_min, self.position_max = position_range
         self.speed_min, self.speed_max = speed_range
     
@@ -33,14 +41,24 @@ class Motor(Capability):
         if cached is not None:
             return cached
         
-        response = self.protocol.send({"_method": "GET", "_path": "/status"})
-        
-        state = {
-            "position": response.get("position", 0.0),
-            "speed": response.get("speed", 0.0),
-            "moving": response.get("moving", False),
-            "homed": response.get("homed", False)
-        }
+        try:
+            response = self.protocol.send({"_method": "GET", "_path": "/status"})
+            
+            state = {
+                "position": response.get("position", 0.0),
+                "speed": response.get("speed", 0.0),
+                "moving": response.get("moving", False),
+                "homed": response.get("homed", False)
+            }
+        except Exception as e:
+            logger.warning("read_state_failed", device=self.id, error=str(e))
+            state = {
+                "position": 0.0,
+                "speed": 0.0,
+                "moving": False,
+                "homed": False,
+                "error": str(e)
+            }
         
         self.cache.set(self.id, state, source="poll")
         return state
@@ -75,7 +93,8 @@ class Motor(Capability):
         return self._send_and_confirm(
             command_payload=payload,
             expected_state={"position": target, "moving": False},
-            timeout=timeout
+            timeout=timeout,
+            command_name="move_to"
         )
     
     def set_speed(self, speed: float) -> CommandResult:
@@ -87,7 +106,8 @@ class Motor(Capability):
                 "_path": "/speed",
                 "speed": clamped
             },
-            expected_state={"speed": clamped}
+            expected_state={"speed": clamped},
+            command_name="set_speed"
         )
     
     def stop(self, confirm: Optional[bool] = None) -> CommandResult:
@@ -95,7 +115,8 @@ class Motor(Capability):
         return self._send_and_confirm(
             command_payload={"_method": "POST", "_path": "/stop", "stop": True},
             expected_state={"moving": False},
-            timeout=1.0  # Short timeout for emergency
+            timeout=1.0,  # Short timeout for emergency
+            command_name="stop"
         )
     
     def home(self, confirm: Optional[bool] = None, timeout: Optional[float] = None) -> CommandResult:
@@ -103,7 +124,8 @@ class Motor(Capability):
         return self._send_and_confirm(
             command_payload={"_method": "POST", "_path": "/home"},
             expected_state={"position": 0.0, "homed": True},
-            timeout=timeout or 30.0  # Homing can be slow
+            timeout=timeout or 30.0,  # Homing can be slow
+            command_name="home"
         )
     
     @property
@@ -115,3 +137,15 @@ class Motor(Capability):
     def is_moving(self) -> bool:
         """True if currently moving."""
         return self.read_state().get("moving", False)
+    
+    async def move_to_async(self, position: float, **kwargs) -> CommandResult:
+        """Async move."""
+        return await self._send_and_confirm_async(
+            command_payload={
+                "_method": "POST",
+                "_path": "/move",
+                "position": max(self.position_min, min(self.position_max, position))
+            },
+            expected_state={"position": position, "moving": False},
+            command_name="move_to"
+        )

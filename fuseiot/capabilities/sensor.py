@@ -1,6 +1,12 @@
+# fuseiot/capabilities/sensor.py
+"""Measurement reading capability."""
+
 from typing import Dict, Any, Optional
 from .base import Capability, CapabilityConfig
 from ..result import CommandResult
+from ..logging_config import get_logger
+
+logger = get_logger("capabilities.sensor")
 
 
 class Sensor(Capability):
@@ -11,8 +17,16 @@ class Sensor(Capability):
     State: value (float), unit (str), timestamp
     """
     
-    def __init__(self, protocol, cache, config=None, unit: str = "unknown"):
-        super().__init__(protocol, cache, config)
+    def __init__(
+        self, 
+        protocol, 
+        cache, 
+        config=None, 
+        unit: str = "unknown",
+        event_bus=None,  # ADD THIS PARAMETER
+        **kwargs
+    ):
+        super().__init__(protocol, cache, config, event_bus=event_bus, **kwargs)
         self.unit = unit
     
     @property
@@ -25,13 +39,23 @@ class Sensor(Capability):
         if cached is not None:
             return cached
         
-        response = self.protocol.send({"_method": "GET", "_path": "/reading"})
-        
-        state = {
-            "value": response.get("value", response.get("reading", 0.0)),
-            "unit": response.get("unit", self.unit),
-            "timestamp": response.get("timestamp")
-        }
+        try:
+            response = self.protocol.send({"_method": "GET", "_path": "/reading"})
+            
+            state = {
+                "value": response.get("value", response.get("reading", 0.0)),
+                "unit": response.get("unit", self.unit),
+                "timestamp": response.get("timestamp")
+            }
+        except Exception as e:
+            logger.warning("read_state_failed", device=self.id, error=str(e))
+            import time
+            state = {
+                "value": 0.0,
+                "unit": self.unit,
+                "timestamp": time.time(),
+                "error": str(e)
+            }
         
         self.cache.set(self.id, state, source="poll")
         return state
@@ -62,6 +86,12 @@ class Sensor(Capability):
             "fresh": fresh
         }
     
+    async def read_async(self, fresh: bool = False) -> Dict[str, Any]:
+        """Async sensor read."""
+        import asyncio
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(None, self.read, fresh)
+    
     @property
     def value(self) -> float:
         """Convenience: current value."""
@@ -75,5 +105,6 @@ class Sensor(Capability):
                 "_path": "/calibrate",
                 "reference": reference_value
             },
-            expected_state={"calibrated": True}
+            expected_state={"calibrated": True},
+            command_name="calibrate"
         )

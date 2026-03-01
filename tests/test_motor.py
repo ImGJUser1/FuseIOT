@@ -1,3 +1,5 @@
+# tests/test_motor.py
+"""Tests for motor capability."""
 
 import pytest
 import responses

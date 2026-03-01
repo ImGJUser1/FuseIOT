@@ -14,7 +14,6 @@ class HTTPSConfig(HTTPConfig):
     ca_bundle: Optional[str] = None
     client_cert: Optional[Tuple[str, str]] = None
     client_key: Optional[str] = None
-    ssl_version: Optional[str] = None
 
 
 class HTTPS(HTTP):
@@ -49,19 +48,3 @@ class HTTPS(HTTP):
     @property
     def endpoint(self) -> str:
         return f"https:{self.base_url}"
-    
-    def _get_ssl_context(self):
-        """Create SSL context with proper configuration."""
-        import ssl
-        
-        context = ssl.create_default_context(
-            cafile=self.ca_bundle
-        )
-        
-        if self.client_cert:
-            context.load_cert_chain(
-                self.client_cert[0],
-                self.client_cert[1] if len(self.client_cert) > 1 else None
-            )
-        
-        return context

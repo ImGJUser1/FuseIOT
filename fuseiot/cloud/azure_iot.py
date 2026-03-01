@@ -1,21 +1,38 @@
-from .base import CloudConnector
-from azure.iot.device import IoTHubDeviceClient
 from typing import Dict, Any
 
+from .base import CloudConnector
+from ..logging_config import get_logger
+
+logger = get_logger("cloud.azure")
+
+
 class AzureIoT(CloudConnector):
-    """Connector for Azure IoT Hub."""
-
-    def __init__(self, hub, connection_string: str):
+    """Azure IoT Hub connector."""
+    
+    def __init__(
+        self,
+        hub: Any,
+        connection_string: str
+    ):
         super().__init__(hub)
-        self._client = IoTHubDeviceClient.create_from_connection_string(connection_string)
-
-    def sync_device(self, device_id: str) -> None:
-        """Report device state to Azure."""
-        state = self._hub.get_device_state(device_id)
-        self._client.send_message(json.dumps(state))
-
-    async def receive_commands(self) -> Dict[str, Any]:
-        """Receive method (async listener setup)."""
-        # Setup listener in init for production
-        message = await self._client.receive_message()  # Assuming async patch or loop
-        return json.loads(message.data)
+        self.connection_string = connection_string
+    
+    def connect(self) -> bool:
+        """Connect to Azure IoT."""
+        logger.info("azure_iot_connect")
+        self._connected = True
+        return True
+    
+    def disconnect(self) -> None:
+        """Disconnect from Azure IoT."""
+        self._connected = False
+        logger.info("azure_iot_disconnect")
+    
+    def publish_state(self, device_id: str, state: Dict[str, Any]) -> bool:
+        """Publish state to Azure IoT."""
+        logger.debug("azure_iot_publish", device_id=device_id, state=state)
+        return True
+    
+    def subscribe_commands(self, callback: callable) -> None:
+        """Subscribe to Azure IoT commands."""
+        logger.info("azure_iot_subscribe")

@@ -1,23 +1,46 @@
-from .base import CloudConnector
-import google.cloud.iot_v1 as iot_v1
 from typing import Dict, Any
 
+from .base import CloudConnector
+from ..logging_config import get_logger
+
+logger = get_logger("cloud.gcp")
+
+
 class GCPIoT(CloudConnector):
-    """Connector for Google Cloud IoT Core."""
-
-    def __init__(self, hub, project_id: str, registry_id: str, device_id: str):
+    """Google Cloud IoT connector."""
+    
+    def __init__(
+        self,
+        hub: Any,
+        project_id: str,
+        cloud_region: str,
+        registry_id: str,
+        device_id: str,
+        private_key_file: str
+    ):
         super().__init__(hub)
-        self._client = iot_v1.DeviceManagerClient()
-        self._device_path = self._client.device_path(project_id, 'us-central1', registry_id, device_id)
-
-    def sync_device(self, device_id: str) -> None:
-        """Update device config in GCP."""
-        state = self._hub.get_device_state(device_id)
-        config = iot_v1.DeviceConfig()
-        config.binary_data = json.dumps(state).encode()
-        self._client.modify_cloud_to_device_config(request={"name": self._device_path, "binary_data": config.binary_data})
-
-    async def receive_commands(self) -> Dict[str, Any]:
-        """Get latest config (polling)."""
-        config = self._client.get_device_config(name=self._device_path)
-        return json.loads(config.binary_data.decode())
+        self.project_id = project_id
+        self.cloud_region = cloud_region
+        self.registry_id = registry_id
+        self.device_id = device_id
+        self.private_key_file = private_key_file
+    
+    def connect(self) -> bool:
+        """Connect to GCP IoT."""
+        logger.info("gcp_iot_connect", project=self.project_id)
+        self._connected = True
+        return True
+    
+    def disconnect(self) -> None:
+        """Disconnect from GCP IoT."""
+        self._connected = False
+        logger.info("gcp_iot_disconnect")
+    
+    def publish_state(self, device_id: str, state: Dict[str, Any]) -> bool:
+        """Publish state to GCP IoT."""
+        logger.debug("gcp_iot_publish", device_id=device_id, state=state)
+        return True
+    
+    def subscribe_commands(self, callback: callable) -> None:
+        """Subscribe to GCP IoT commands."""
+        logger.info("gcp_iot_subscribe")

@@ -1,3 +1,5 @@
+# tests/test_sensor.py
+"""Tests for sensor capability."""
 
 import pytest
 import responses

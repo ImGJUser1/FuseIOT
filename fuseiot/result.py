@@ -1,7 +1,10 @@
+"""
+Result types for device commands and batch operations.
+This module defines the standard return types used throughout FuseIoT.
+"""
 from typing import Dict, Any, Optional, Union, List
 from dataclasses import dataclass, field
 from enum import Enum, auto
-
 import time
 
 
@@ -139,6 +142,7 @@ class CommandResult:
             return f"<CommandResult UNCONFIRMED {status_str}>"
         else:
             return f"<CommandResult FAILED {status_str}: {self.error}>"
+
 
 @dataclass
 class BatchResult:

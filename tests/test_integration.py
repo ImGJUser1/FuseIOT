@@ -1,3 +1,6 @@
+# tests/test_integration.py
+"""Integration tests."""
+
 import pytest
 import responses
 import time
@@ -5,6 +8,7 @@ import time
 from fuseiot import Hub, HTTP, Switchable, Sensor, Motor
 
 
+@pytest.mark.integration
 def test_thermostat_scenario(responses_mock):
     """Complete thermostat: sensor controls heater."""
     # Mock temperature sensor
@@ -65,6 +69,7 @@ def test_thermostat_scenario(responses_mock):
     assert heater.is_on
 
 
+@pytest.mark.integration
 def test_multi_device_hub(responses_mock):
     """Multiple devices in single hub."""
     # Device 1: Light
@@ -141,6 +146,7 @@ def test_multi_device_hub(responses_mock):
     assert stats["devices_active"] == 3
 
 
+@pytest.mark.integration
 def test_device_categories_filtering(responses_mock):
     """Filter devices by category."""
     # Setup mocks for 2 switches and 1 sensor
@@ -175,6 +181,7 @@ def test_device_categories_filtering(responses_mock):
     assert "t1" in sensors
 
 
+@pytest.mark.integration
 def test_error_recovery(responses_mock):
     """Command failure and retry."""
     # First call fails, second succeeds
@@ -211,6 +218,7 @@ def test_error_recovery(responses_mock):
     assert len([c for c in responses_mock.calls if "/on" in c.request.url]) == 2
 
 
+@pytest.mark.integration
 def test_cache_invalidation_on_command(responses_mock):
     """State cache updates after command."""
     # Initial state

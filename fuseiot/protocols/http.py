@@ -4,7 +4,6 @@ from dataclasses import dataclass
 
 try:
     import aiohttp
-    import aiohttp.client_exceptions
     AIOHTTP_AVAILABLE = True
 except ImportError:
     AIOHTTP_AVAILABLE = False
@@ -27,7 +26,6 @@ class HTTPConfig(ProtocolConfig):
     verify_ssl: bool = True
     client_cert: Optional[Tuple[str, str]] = None
     connection_pool_size: int = 100
-    keepalive_timeout: float = 30.0
 
 
 class HTTP(AsyncProtocol):
@@ -49,9 +47,6 @@ class HTTP(AsyncProtocol):
         client_cert: Optional[Tuple[str, str]] = None,
         config: Optional[HTTPConfig] = None
     ):
-        if not AIOHTTP_AVAILABLE:
-            raise ImportError("aiohttp required: pip install aiohttp")
-        
         super().__init__(config or HTTPConfig())
         self.base_url = base_url.rstrip("/")
         self.auth = auth
@@ -61,7 +56,7 @@ class HTTP(AsyncProtocol):
         self.client_cert = client_cert
         
         self._session: Optional[aiohttp.ClientSession] = None
-        self._sync_session = None  # For sync fallback
+        self._sync_session = None
     
     @property
     def endpoint(self) -> str:
@@ -80,6 +75,10 @@ class HTTP(AsyncProtocol):
     
     async def connect_async(self) -> bool:
         """Async connection with aiohttp."""
+        if not AIOHTTP_AVAILABLE:
+            # Fallback to sync
+            return self.connect()
+        
         try:
             connector = aiohttp.TCPConnector(
                 limit=self.config.connection_pool_size,
@@ -95,7 +94,6 @@ class HTTP(AsyncProtocol):
                 headers=self._get_headers(),
             )
             
-            # Test connection with HEAD request
             async with self._session.head(
                 self.base_url,
                 ssl=None if not self.verify_ssl else True,
@@ -107,7 +105,7 @@ class HTTP(AsyncProtocol):
                     self._update_state(ConnectionState.FAILED, f"HTTP {response.status}")
                     return False
                     
-        except aiohttp.ClientError as e:
+        except Exception as e:
             self._update_state(ConnectionState.FAILED, str(e))
             return False
     
@@ -153,6 +151,12 @@ class HTTP(AsyncProtocol):
     @async_retry(AsyncRetryConfig(max_attempts=3, base_delay=0.1))
     async def send_async(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         """Native async send."""
+        if not AIOHTTP_AVAILABLE:
+            # Fallback to sync in thread pool
+            import asyncio
+            loop = asyncio.get_event_loop()
+            return await loop.run_in_executor(None, self.send, payload)
+        
         if not self._session:
             raise ProtocolError("Not connected", "http", self.base_url)
         
@@ -169,33 +173,17 @@ class HTTP(AsyncProtocol):
             ssl_ctx = None if not self.verify_ssl else True
             
             if method == "GET":
-                async with self._session.get(
-                    url,
-                    params=body if body else None,
-                    ssl=ssl_ctx
-                ) as response:
+                async with self._session.get(url, params=body if body else None, ssl=ssl_ctx) as response:
                     data = await response.json() if response.content_type == "application/json" else {}
-                    
             elif method == "POST":
-                async with self._session.post(
-                    url,
-                    json=body,
-                    ssl=ssl_ctx
-                ) as response:
+                async with self._session.post(url, json=body, ssl=ssl_ctx) as response:
                     data = await response.json() if response.content_type == "application/json" else {}
-                    
             elif method == "PUT":
-                async with self._session.put(
-                    url,
-                    json=body,
-                    ssl=ssl_ctx
-                ) as response:
+                async with self._session.put(url, json=body, ssl=ssl_ctx) as response:
                     data = await response.json() if response.content_type == "application/json" else {}
-                    
             else:
                 raise ValueError(f"Unsupported HTTP method: {method}")
             
-            # Update metrics
             latency_ms = (time.monotonic() - start) * 1000
             self._metrics["messages_sent"] += 1
             self._metrics["messages_received"] += 1
@@ -204,20 +192,21 @@ class HTTP(AsyncProtocol):
             if response.status >= 400:
                 if response.status == 401:
                     raise AuthenticationError(f"Authentication failed: {data}")
-                raise ProtocolError(
-                    f"HTTP {response.status}: {data}",
-                    "http",
-                    url
-                )
+                raise ProtocolError(f"HTTP {response.status}: {data}", "http", url)
             
             return data
             
-        except aiohttp.ClientError as e:
+        except Exception as e:
             self._metrics["errors"] += 1
             raise ProtocolError(f"HTTP request failed: {e}", "http", url, e)
     
     def send(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         """Sync send using requests."""
+        try:
+            import requests
+        except ImportError:
+            raise ImportError("requests required for sync HTTP: pip install requests")
+        
         if not self._sync_session:
             raise ProtocolError("Not connected", "http", self.base_url)
         
@@ -230,27 +219,18 @@ class HTTP(AsyncProtocol):
         try:
             if method == "GET":
                 response = self._sync_session.get(
-                    url,
-                    params=body if body else None,
-                    timeout=self.config.timeout,
-                    verify=self.verify_ssl,
-                    cert=self.client_cert
+                    url, params=body if body else None,
+                    timeout=self.config.timeout, verify=self.verify_ssl, cert=self.client_cert
                 )
             elif method == "POST":
                 response = self._sync_session.post(
-                    url,
-                    json=body,
-                    timeout=self.config.timeout,
-                    verify=self.verify_ssl,
-                    cert=self.client_cert
+                    url, json=body,
+                    timeout=self.config.timeout, verify=self.verify_ssl, cert=self.client_cert
                 )
             elif method == "PUT":
                 response = self._sync_session.put(
-                    url,
-                    json=body,
-                    timeout=self.config.timeout,
-                    verify=self.verify_ssl,
-                    cert=self.client_cert
+                    url, json=body,
+                    timeout=self.config.timeout, verify=self.verify_ssl, cert=self.client_cert
                 )
             else:
                 raise ValueError(f"Unsupported HTTP method: {method}")

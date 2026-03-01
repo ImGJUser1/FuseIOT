@@ -1,11 +1,9 @@
-import asyncio
 import sys
 import json
 import click
 from typing import Optional
 
 from fuseiot import Hub, HTTP, Switchable, Sensor, auto_config, configure_logging, get_logger
-from fuseiot.discovery.mdns import MDNSDiscovery
 
 logger = get_logger("cli")
 
@@ -18,7 +16,6 @@ def cli(ctx, config, verbose):
     """FuseIoT - Deterministic device control CLI."""
     ctx.ensure_object(dict)
     
-    # Load configuration
     cfg = auto_config(config)
     configure_logging(
         level="DEBUG" if verbose else cfg.log_level,
@@ -33,6 +30,8 @@ def cli(ctx, config, verbose):
 @click.pass_context
 def discover(ctx):
     """Discover devices on network."""
+    from fuseiot.discovery.mdns import MDNSDiscovery
+    
     click.echo("Scanning for devices...")
     
     discovery = MDNSDiscovery()
@@ -63,7 +62,7 @@ def status(ctx, device_id):
         click.echo(f"Device: {device_id}")
         click.echo(f"Category: {device.category}")
         click.echo(f"Protocol: {device.protocol.name}")
-        click.echo(f"State: {json.dumps(state, indent=2)}")
+        click.echo(f"State: {json.dumps(state, indent=2, default=str)}")
         
     except KeyError:
         click.echo(f"Device not found: {device_id}", err=True)
@@ -152,6 +151,20 @@ def stats(ctx):
     stats = hub.stats()
     
     click.echo(json.dumps(stats, indent=2, default=str))
+
+
+@cli.command()
+@click.argument('config_file')
+@click.pass_context
+def load_config(ctx, config_file):
+    """Load devices from configuration file."""
+    from fuseiot.config import from_yaml
+    
+    hub = ctx.obj['hub']
+    config = from_yaml(config_file)
+    
+    # TODO: Implement device loading from config
+    click.echo(f"Configuration loaded from {config_file}")
 
 
 def main():
