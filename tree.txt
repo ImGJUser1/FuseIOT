@@ -1,0 +1,50 @@
+fuseiot/
+├── pyproject.toml
+├── README.md
+├── LICENSE (MIT)
+├── fuseiot/
+│   ├── __init__.py          # Public API exports
+│   ├── __version__.py         # Version single source
+│   ├── hub.py                 # Core device registry
+│   ├── result.py              # Command results
+│   ├── exceptions.py          # Error hierarchy
+│   ├── types.py               # Type definitions
+│   │
+│   ├── capabilities/
+│   │   ├── __init__.py
+│   │   ├── base.py            # Abstract capability
+│   │   ├── switchable.py      # On/off control
+│   │   ├── sensor.py          # Read values
+│   │   └── motor.py           # Position/speed
+│   │
+│   ├── protocols/
+│   │   ├── __init__.py
+│   │   ├── base.py            # Transport interface
+│   │   ├── http.py            # HTTP/REST
+│   │   └── mqtt.py            # MQTT transport
+│   │
+│   ├── state/
+│   │   ├── __init__.py
+│   │   ├── cache.py           # TTL state cache
+│   │   └── confirm.py         # Confirmation engine
+│   │
+│   └── utils/
+│       ├── __init__.py
+│       ├── retry.py           # Retry decorator
+│       └── async_tools.py     # Async helpers
+│
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py            # pytest fixtures
+│   ├── test_hub.py
+│   ├── test_switchable.py
+│   ├── test_sensor.py
+│   ├── test_motor.py
+│   ├── test_http.py
+│   ├── test_mqtt.py
+│   └── test_integration.py
+│
+└── examples/
+    ├── basic_relay.py
+    ├── thermostat.py
+    └── async_example.py
